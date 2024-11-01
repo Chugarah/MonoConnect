@@ -1,31 +1,38 @@
 {
-	"name": "silicon-ab-2",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev --turbopack",
-		"build": "next build",
-		"start": "next start",
-		"lint": "next lint"
-	},
-	"dependencies": {
-		"next": "15.0.2",
-		"react": "19.0.0-rc-02c0e824-20241028",
-		"react-dom": "19.0.0-rc-02c0e824-20241028"
-	},
-	"devDependencies": {
-		"@repo/biome-config": "workspace:*",
-		"@repo/eslint-config": "workspace:*",
-		"@repo/eslint-config-biome": "workspace:*",
-		"@repo/jest-presets": "workspace:*",
-		"@repo/typescript-config": "workspace:*",
-		"@types/node": "^22.8.6",
-		"@types/react": "^18.3.12",
-		"@types/react-dom": "^18.3.1",
-		"eslint": "^9.13.0",
-		"eslint-config-next": "15.0.2",
-		"postcss": "^8.4.47",
-		"tailwindcss": "^3.4.14",
-		"typescript": "^5.6.3"
-	}
+  "name": "silicon-ab-2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "biome format .",
+    "lint:biome": "biome lint .",
+    "check": "pnpm biome check . --verbose",
+    "biome:fix": "pnpm biome format . --write",
+    "fix": "pnpm biome check . --write --unsafe"
+  },
+  "dependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "aos": "^2.3.4",
+    "next": "15.0.2",
+    "react": "19.0.0-rc-02c0e824-20241028",
+    "react-dom": "19.0.0-rc-02c0e824-20241028"
+  },
+  "devDependencies": {
+    "@repo/biome-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/eslint-config-biome": "workspace:*",
+    "@repo/jest-presets": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^22.8.6",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "eslint": "^9.13.0",
+    "eslint-config-next": "15.0.2",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3"
+  }
 }

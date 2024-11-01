@@ -76,7 +76,13 @@
 			"**/.next/**",
 			"**/coverage/**",
 			"**/storybook-static/**",
-			"**/.git/**"
+			"**/.git/**",
+			"**/*.svg",
+			"**/*.png",
+			"**/*.jpg",
+			"**/*.jpeg",
+			"**/*.gif",
+			"**/*.ico"
 		]
 	},
 	"vcs": {
