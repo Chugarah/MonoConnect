@@ -4,5 +4,12 @@
 			"mode": "auto"
 		}
 	],
-	"cSpell.words": ["dotfiles", "popperjs", "swcrc", "tailwindcss", "turbopack"]
+	"cSpell.words": [
+		"dotfiles",
+		"logomark",
+		"popperjs",
+		"swcrc",
+		"tailwindcss",
+		"turbopack"
+	]
 }
