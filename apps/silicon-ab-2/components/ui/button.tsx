@@ -26,7 +26,7 @@ const buttonVariants = cva(
 					rounded-lg
 					will-change-[color,background-color]
 					hover:bg-theme-light-primary/90
-					gap-3
+
 				`,
 			},
 			size: {

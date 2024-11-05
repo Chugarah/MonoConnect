@@ -16,13 +16,13 @@ $_grid-max-width: 46.625rem;
 
     /// Navigation Items
     &__navigation {
-      @apply flex items-center list-none
-      text-theme-light-section-color
-      dark:text-theme-dark-section-color;
+      @apply flex items-center list-none;
 
       &__li-items {
-        @apply text-theme-light-navigation cursor-pointer transition-all duration-200;
+        @apply text-theme-light-navigation dark:text-theme-dark-navigation
+        cursor-pointer transition-all duration-200;
         will-change: color;
+
 
         &:hover {
           @apply text-theme-light-primary cursor-pointer;

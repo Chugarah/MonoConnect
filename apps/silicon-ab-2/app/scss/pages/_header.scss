@@ -17,14 +17,10 @@ $_grid-max-width: 46.625rem;
   /// Remove the spacing to mobile link, because the text Dark-mode is out of space
   @apply @small/header:pr-sm;
 
-
-
   // Logo
   &__logo {
     @apply mr-[3em] w-[7.625em] h-[2.75em] bg-contain bg-no-repeat bg-center;
     background-image: var(--logo-image);
-
-
   }
 
   &__nav-group {
@@ -40,7 +36,7 @@ $_grid-max-width: 46.625rem;
     &__text-span {
       @apply pr-sm text-theme-light-forms
       dark:text-theme-dark-forms text-t-m font-Bold;
-
+      @apply transition-all duration-500;
       /// Hide on smaller screens (below medium)
       @apply hidden;
 
@@ -48,13 +44,8 @@ $_grid-max-width: 46.625rem;
       @apply @medium/header:block;
     }
 
-
-
-
-    &__btn-sign-in{
-    @apply @xlarge/header:block @medium/header:hidden @mobile/header:hidden;
-
+    &__btn-sign-in {
+      @apply @xlarge/header:block @medium/header:hidden @mobile/header:hidden;
     }
-
   }
 }
