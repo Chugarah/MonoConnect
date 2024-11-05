@@ -1,0 +1,19 @@
+@use "../../node_modules/tailwindcss/base" as tw-base;
+@use "../../node_modules/tailwindcss/components" as tw-components;
+@use "../../node_modules/tailwindcss/utilities" as tw-utilities;
+@use "abstracts";
+@use "base";
+@use "layout";
+@use "components";
+@use "vendors";
+@use "pages";
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-theme-light-bg-color text-theme-light-foreground-color;
+  }
+}

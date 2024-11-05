@@ -1,0 +1,25 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint", "import", "jsdoc"],
+	"extends": [
+		"next/core-web-vitals",
+		"next/typescript",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking"
+	],
+	"parserOptions": {
+		"ecmaVersion": 2022,
+		"sourceType": "module",
+		"project": "./tsconfig.json",
+		"tsconfigRootDir": "."
+	},
+	"settings": {
+		"import/resolver": {
+			"typescript": {
+				"project": "./tsconfig.json",
+				"alwaysTryTypes": true
+			}
+		}
+	}
+}

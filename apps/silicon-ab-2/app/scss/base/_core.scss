@@ -1,0 +1,41 @@
+
+@use "_typography" as t;
+@use "../abstracts/_themes" as th;
+@use "../abstracts/_variables" as v;
+
+html {
+  font-size: t.$core-font-size;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/// Theme Settings
+:root {
+  --logo-image: url("/svg/logo.svg");
+  --app-image-android: url("/images/store-buttons/app-android-store-btn-group.svg");
+  --app-image-apple: url("/images/store-buttons/app-store-btn-group.svg");
+  @include th.generate-theme-vars(th.$light-theme);
+}
+
+.dark-theme {
+  --logo-image: url("/svg/logo-dark.svg");
+  --app-image-android: url("/images/store-buttons/app-android-store-btn-group-dark.svg");
+  --app-image-apple: url("/images/store-buttons/app-apple-store-btn-group-dark.svg");
+  @include th.generate-theme-vars(th.$dark-theme);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /// Include font awesome
+}
+
+a {
+  text-decoration: none;
+}

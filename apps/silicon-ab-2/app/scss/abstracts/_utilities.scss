@@ -1,0 +1,278 @@
+@use "sass:color";
+@use "sass:meta";
+@use "sass:list";
+/// @name content-container
+
+/// @group Utility
+///
+///
+.display-none {
+  display: none;
+}
+
+/// =============================================================================
+/// Box Shadow Mixin (Multiple Shadows)
+/// =============================================================================
+
+/// @name box-shadow
+/// @group Effects
+///
+/// Applies customizable box shadow or filter drop shadow effects to an element.
+/// Supports multiple stacked shadows for both box-shadow and filter: drop-shadow().
+/// Now includes support for inner shadows (inset) for box-shadow.
+///
+/// @param {Boolean} $filter [false] - If true, applies filter drop shadow instead of box shadow
+/// @param {List} $shadows... - List of shadow parameters, each set enclosed in parelist.ntheses
+///
+/// @example code-scss
+///   .element-with-multiple-shadows {
+///     @include box-shadow(
+///       false,
+///       (2px 2px 4px 1px #000000 0.5),
+///       (0 4px 6px null #0000FF 0.3),
+///       (-1px -1px 2px null #FF0000 0.2)
+///     );
+///   }
+///
+///   .element-with-inner-shadow {
+///     @include box-shadow(
+///       false,
+///       (inset 0 2px 4px 1px #000000 0.5)
+///     );
+///   }
+///
+///   .filtered-element-with-multiple-shadows {
+///     @include box-shadow(
+///       true,
+///       (2px 2px 4px #000000 0.5),
+///       (0 4px 6px #0000FF 0.3),
+///       (-1px -1px 2px #FF0000 0.2)
+///     );
+///   }
+///
+/// @link https://www.rapidtables.com/convert/color/hex-to-rgb.html
+///
+/// @description
+/// For box-shadow: [inset] [offset-x] [offset-y] [blur-radius] [spread-radius] [color] [opacity]
+/// For filter: drop-shadow(): [offset-x] [offset-y] [blur-radius] [color] [opacity]
+/// The mixin uses the hex-to-rgb function to convert the shadow color from hex to rgba.
+/// This mixin supports multiple stacked shadows and correctly handles both box-shadow
+/// and filter: drop-shadow(), ensuring proper CSS syntax for multiple drop-shadow filters.
+/// Inner shadows (inset) are now supported for box-shadow.
+///
+/// @note
+/// For filter: drop-shadow(), each shadow is applied as a separate drop-shadow() function,
+/// allowing for correct stacking of multiple filter shadows. Inset shadows are not supported
+/// for filter: drop-shadow().
+///
+/// @implementation
+/// The mixin loops through each provided shadow, constructs the appropriate string
+/// representation, and then combines them into either a single box-shadow property
+/// or multiple drop-shadow() functions within a filter property.
+///
+/// This implementation ensures compatibility with CSS specifications for both
+/// box-shadow and filter: drop-shadow(), providing maximum flexibility and correct
+/// rendering of multiple shadows in both contexts, including inner shadows for box-shadow.
+
+/// The code below is 100% improved using AI Phind, Previous solution just supported one
+/// shadow now we can have unlimited stacked shadow both filter and box-shadow. AI even
+/// created the Documentation above :P, Added now to support inner shadow using Inset :)
+@mixin box-shadow($filter: false, $shadows...) {
+  $result: ();
+
+  @each $shadow in $shadows {
+    $inset: if(list.nth($shadow, 1) ==inset, inset, null);
+    $start-index: if($inset, 2, 1);
+
+    $sh-x: list.nth($shadow, $start-index);
+    $sh-y: list.nth($shadow, $start-index + 1);
+    $sh-blur: list.nth($shadow, $start-index + 2);
+    $sh-spread: if(
+      list.length($shadow) > $start-index + 4,
+      list.nth($shadow, $start-index + 3),
+      null
+    );
+    $sh-color: list.nth($shadow, -2);
+    $opacity: list.nth($shadow, -1);
+
+    $shadow-string: "";
+
+    @if $filter {
+      $shadow-string: #{$sh-x}
+        #{$sh-y}
+        #{$sh-blur}
+        #{hex-to-rgb($sh-color, $opacity)};
+    } @else {
+      $shadow-string: #{$inset}
+        #{$sh-x}
+        #{$sh-y}
+        #{$sh-blur}
+        #{$sh-spread}
+        #{hex-to-rgb($sh-color, $opacity)};
+    }
+
+    @if $filter {
+      $result: list.append($result, drop-shadow($shadow-string));
+    } @else {
+      $result: list.append($result, $shadow-string, comma);
+    }
+  }
+
+  @if $filter {
+    filter: $result;
+  } @else {
+    box-shadow: $result;
+  }
+}
+
+/// =============================================================================
+/// Image Background Mixin
+/// =============================================================================
+
+/// Layout Module
+/// =============================================================================
+/// This module provides a flexible background generator mixin for consistent image and background styling.
+///
+/// @group layout
+
+/// Background Generator Mixin
+///
+/// Applies background styling to an element, typically used for image containers or background elements.
+///
+/// @param {Color} $bg-color-ib - Background color of the container
+/// @param {list.length} $border-radius-ib - Border radius of the container
+/// @param {list.length} $padding-x-ib - Horizontal padding of the container
+/// @param {list.length} $padding-y-ib - Vertical padding of the container
+/// @param {String} $bg-position [null] - Position of the background (optional)
+///
+/// @example code-scss
+///   .image-container {
+///     @include background-generator(#f5f5f5, 10px, 15px, 20px);
+///   }
+///
+/// @example code-scss
+///   .positioned-background {
+///     @include background-generator(#e0e0e0, 5px, 10px, 10px, absolute);
+///   }
+@mixin background-generator(
+  $bg-color-ib,
+  $border-radius-ib,
+  $padding-x-ib,
+  $padding-y-ib,
+  $bg-position: null
+) {
+  background-color: $bg-color-ib;
+  border-radius: $border-radius-ib;
+  padding: $padding-y-ib $padding-x-ib;
+
+  @if $bg-position != null {
+    position: $bg-position;
+  }
+}
+
+/// =============================================================================
+
+/// =============================================================================
+/// Padding & Spacing Helpers
+/// =============================================================================
+
+/// Adds left and right padding to an element
+///
+/// @param {list.length} $padding-left - Left padding
+/// @param {list.length} $padding-right - Right padding
+///
+/// @example code-scss
+///   .element {
+///     @include padding-left-right(10px, 20px);
+///   }
+///
+/// @example code-css
+///   .element {
+///     padding-left: 10px;
+///     padding-right: 20px;
+///   }
+/// Documentation Generated by Phind AI
+@mixin padding-left-right($padding-left, $padding-right) {
+  padding-left: $padding-left;
+  padding-right: $padding-right;
+}
+
+/// Padding Module
+/// =============================================================================
+/// This module provides a mixin for easily adding top and bottom padding to elements.
+///
+/// @group layout
+/// @author Georgi
+
+/// Padding Top and Bottom mixin
+///
+/// Adds top and bottom padding to an element.
+///
+/// @param {list.length} $padding-top - Top padding
+/// @param {list.length} $padding-bottom - Bottom padding
+///
+/// @example code-scss
+///   .element {
+///     @include padding-top-bottom(15px, 25px);
+///   }
+///
+/// @example code-css
+///   .element {
+///     padding-top: 15px;
+///     padding-bottom: 25px;
+///   }
+@mixin padding-top-bottom($padding-top, $padding-bottom) {
+  padding-top: $padding-top;
+  padding-bottom: $padding-bottom;
+}
+
+/// Color Utilities Module
+/// =============================================================================
+/// This module provides a mixin for lightening colors, supporting both direct color values and CSS variables.
+/// Created with assistance from Phind AI
+///
+/// @group color-utilities
+/// @author [Your Name]
+
+/// Lighten Color Mixin
+///
+/// Lightens a given color or CSS variable by mixing it with a second color.
+///
+/// @param {Color|String} $color - The color to lighten. Can be a direct color value or a CSS variable.
+/// @param {Percentage} $amount [20%] - The amount of the second color to mix in (default: 20%)
+/// @param {Color} $second-color [white] - The color to mix with the base color (default: white)
+///
+/// @example scss
+///   .element {
+///     @include lighten-color(#3366cc);
+///   }
+///
+/// @example scss
+///   .element {
+///     @include lighten-color(var(--primary-color), 30%, #f0f0f0);
+///   }
+@mixin lighten-color-background(
+  $property,
+  $color,
+  $amount: 20%,
+  $second-color: white
+) {
+  @if meta.type-of($color) == "color" {
+    // For direct color values
+    #{$property}: color.adjust($color);
+  } @else {
+    // For CSS variables or other values
+
+    // Fallback first
+    background-color: $color;
+
+    // Check for color-mix support
+    @supports (background: color-mix(in srgb, red, blue)) {
+      #{$property}: color-mix(
+        in srgb,
+        $color calc(100% - #{$amount}),
+        $second-color $amount
+      );
+    }
+  }
+}

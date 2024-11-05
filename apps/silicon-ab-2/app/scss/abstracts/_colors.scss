@@ -1,0 +1,59 @@
+/// =============================================================================
+/// Global Colors
+/// =============================================================================
+$color-white: #ffffff;
+
+/// =============================================================================
+/// Grayscale
+/// =============================================================================
+/// Global Colors
+$grey-100: #f3f6ff;
+$grey-200: #eff2fc;
+$grey-300: #e2e5f1;
+$grey-400: #d4d7e5;
+$grey-500: #b4b7c9;
+$grey-600: #9397ad;
+$grey-700: #565973;
+$grey-750: #585c7b;
+$grey-770: #3e4265;
+$grey-800: #33354d;
+$grey-900: #0b0f19;
+
+/// =============================================================================
+/// Brands
+/// $font-color-label: #201e29;
+///
+/// =============================================================================
+/// Global Colors
+$color-primary: #6366f1;
+$color-primary-gradient: linear-gradient(
+  to left,
+  $color-primary 0,
+  #8b5cf6 50%,
+  #d946ef 100%
+);
+$color-transparent: rgb(255, 255, 255, 0);
+
+/// =============================================================================
+/// System
+/// =============================================================================
+/// Global Colors
+$system-error: #ef4444;
+$system-success: #22c55e;
+$system-warning: #ffba08;
+$system-info: #4c82f7;
+
+/// =============================================================================
+/// Shadows
+/// =============================================================================
+/// Global Colors
+$shadow-color-primary: #131022;
+$shadow-color-secondary: #39455a;
+$shadow-small: (0 0.275em 0.75em -0.0625em $shadow-color-primary 0.06),
+  (0 0.125em 0.4em -0.0625em $shadow-color-primary 0.03);
+$shadow-medium: (0 0.275em 1.25em -0.0625em $shadow-color-primary 0.05),
+  (0 0.25em 0.5625em -0.0625em $shadow-color-primary 0.03);
+$shadow-large: (0 0.3em 1.5em -0.375em $shadow-color-primary 0.1),
+  (0 0.25em 0.8125em -0.125em $shadow-color-primary 0.06);
+$shadow-primary: (0 0.5em 1.125em -0.5em $color-primary 0.1);
+$shadow-secondary: (0 0.5em 1.125em -0.5em $shadow-color-primary 0.15);

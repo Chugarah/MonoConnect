@@ -1,0 +1,77 @@
+@use "sass:list";
+@use "sass:string";
+@use "../../../node_modules/@fortawesome/fontawesome-free/scss/_mixins" as fa;
+@use "../../../node_modules/@fortawesome/fontawesome-free/scss/_functions" as fu;
+// Importera andra stilar
+
+/// =============================================================================
+/// Mixins
+/// =============================================================================
+///
+///
+
+/// @name vendor-fa-icon
+/// @group Icons
+///
+/// Creates a Font Awesome icon with customizable style and size.
+/// Uses the @fortawesome/fontawesome-free package for easy implementation
+/// of solid or brand icons with optional width and height adjustment.
+///
+/// @param {String} $font-var - Font Awesome variable for the specific icon
+/// @param {String} $font-awesome-style - Style of the icon ('solid' or 'brand')
+/// @param {Length} $fa-icon-width [null] - Optional width for the icon (e.g., '20px')
+/// @param {Length} $fa-icon-height [null] - Optional height for the icon (e.g., '20px')
+///
+/// @example code-scss
+///   .my-icon {
+///     @include vendor-fa-icon($fa-var-user, solid, 20px, 20px);
+///   }
+///
+/// @example code-scss - Usage with container query
+///   .my-responsive-icon {
+///     @include vendor-fa-icon($fa-var-star, solid);
+///
+///     @container (min-width: 300px) {
+///       @include vendor-fa-icon($fa-var-star, solid, 24px, 24px);
+///     }
+///   }
+///
+/// @throws Will throw an error if an invalid $font-awesome-style is provided
+///
+/// @requires {mixin} fa.fa-icon - Font Awesome icon mixin
+/// @requires {function} fa.fa-content - Font Awesome content function
+/// @requires {placeholder} .fa-solid-base - Placeholder for solid icon styles
+/// @requires {placeholder} .fa-brand-base - Placeholder for brand icon styles
+///
+/// @note This mixin now uses separate width and height parameters for more flexible sizing.
+///       The font-size is set to the minimum of width and height to ensure the icon fits within its container.
+///
+/// AI Phind assisted in generating and refining this documentation
+
+@mixin vendor-fa-icon(
+  $font-var,
+  $font-awesome-style,
+  $fa-icon-width,
+  $fa-icon-height
+) {
+  @include fa.fa-icon;
+
+  &::before {
+    @if ($font-awesome-style == solid) {
+      @extend .fa-solid-base;
+    } @else if($font-awesome-style == brand) {
+      @extend .fa-brand-base;
+    } @else {
+      /// Got inspired by Phind, this seems like good thing todo before
+      /// it gets compiled to see if we get any errors ;)
+      @error "Invalid $font-awesome-style. Must be 'solid' or 'brand'.";
+    }
+
+    content: fu.fa-content(string.unquote($font-var));
+
+    // Set icon size after content for easier overwriting when using container queries
+    @if $fa-icon-width and $fa-icon-height {
+      font-size: min($fa-icon-width, $fa-icon-height);
+    }
+  }
+}

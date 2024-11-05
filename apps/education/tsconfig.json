@@ -1,0 +1,30 @@
+{
+	"extends": "@repo/typescript-config/vite.json",
+	"compilerOptions": {
+		"strict": true,
+		"esModuleInterop": true,
+		"jsx": "react-jsx",
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"forceConsistentCasingInFileNames": true,
+		"baseUrl": "./src",
+		"paths": {
+			"@components/*": ["./components/*"],
+			"@scss/*": ["./scss/*"]
+		}
+	},
+	"include": [
+		"./src/**/*",
+		"./*.js",
+		"./*.ts",
+		"./*.cjs",
+		"./*.mjs",
+		"./*.jsx",
+		"./*.tsx",
+		"./*.swcrc",
+		"./vite.config.ts",
+		"./src/**/*.d.ts",
+		"./src/routes/education"
+	]
+}

@@ -1,0 +1,249 @@
+@use "_variables" as a;
+@use "_functions" as f;
+@use "_utilities" as u;
+
+/// =============================================================================
+/// Form Elements
+/// =============================================================================
+
+/// @name Checkbox
+///
+/// Base Component's for an switch
+///
+@mixin toggle {
+  position: relative;
+  display: inline-block;
+}
+
+@mixin slider($bg) {
+  --_primary-width: 2.875em;
+  --_primary-height: 1.5em;
+
+  position: absolute;
+  inset: 0;
+  background-color: $bg;
+  border-radius: 100vw;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  height: var(--_primary-height);
+  width: var(--_primary-width);
+
+  /// Pseudo
+  /// This one creates the bal inside the slider
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: calc(min(100%, var(--_primary-height)));
+    transform: translateY(-50%);
+    height: 83%;
+    border-radius: 50%;
+    aspect-ratio: 1;
+  }
+}
+
+/// A awesome way to hide the checkbox
+@mixin hide-check-box {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+/// @name Buttons
+///
+/// Base Component's for an buttons
+///
+
+@mixin btn($position: null) {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+
+  /// Extra props incase we want to add an example an image inside
+  @if $position !=null {
+    position: $position;
+  }
+}
+
+/// Applying Button colors and border radios
+/// Standard Button Props
+@mixin btn-props($text, $bg, $border-radius, $padding...) {
+  background-color: $bg;
+  color: $text;
+  border-radius: $border-radius;
+  padding: $padding;
+}
+
+/// =============================================================================
+/// Links
+/// =============================================================================
+
+/// This module provides mixins for handling interactive states of elements,
+/// particularly useful for links and buttons.
+/// Implemented by AI Phind
+///
+/// @group links
+/// @author AI Phind
+
+/// Interactive Element Styles
+///
+/// Applies interactive states (hover, active, focus-visible) to a given selector.
+/// This mixin handles different pseudo states of an object.
+///
+/// @param {String} $selector - The selector to apply the interactive states to
+///
+/// @example code-scss
+///   @include interactive-states('.button') {
+///     // Button styles
+///   }
+///
+/// @requires {mixin} link-nav-animation
+///
+/// @access public
+@mixin interactive-states($selector) {
+  #{$selector} {
+    /// Adding Animation when mouse is out
+    transition:
+      color var(--interactive-transition-base) ease-in-out,
+      background-color var(--interactive-transition-base) ease-in-out;
+    cursor: pointer;
+    outline: none;
+
+    // Hover state
+    &:hover {
+      @include link-nav-animation(
+        var(--interactive-color-hover),
+        var(--interactive-color-strength-hover),
+        var(--interactive-transition-hover),
+        var(--interactive-bg-hover)
+      );
+    }
+
+    // Active state
+    &:active {
+      @include link-nav-animation(
+        var(--interactive-color-active),
+        var(--interactive-color-strength-active),
+        var(--interactive-transition-active),
+        var(--interactive-bg-active)
+      );
+    }
+
+    // Focus-visible state
+    &:focus-visible {
+      @include link-nav-animation(
+        var(--interactive-color-focus-visible),
+        var(--interactive-color-strength-visible),
+        var(--interactive-transition-focus-visible),
+        var(--interactive-bg-focus-visible)
+      );
+    }
+  }
+}
+/// Basic interactive states for links
+///
+/// Applies basic interactive states to links with customizable colors.
+///
+/// @param {Color} $color-hover - The color to apply on hover
+/// @param {Color} $color-active - The color to apply on active state
+/// @param {Color} $color-focus - The color to apply on focus
+///
+/// @example code-scss
+///   .link {
+///     @include is-base-links(blue, darkblue, lightblue);
+///   }
+///
+/// @access public
+@mixin is-base-links($color-hover, $color-active, $color-focus) {
+  --interactive-bg-hover: null;
+  --interactive-bg-active: null;
+  --interactive-bg-focus-visible: null;
+  --interactive-color-hover: #{$color-hover};
+  --interactive-color-active: #{$color-active};
+  --interactive-color-focus-visible: #{$color-focus};
+  --interactive-color-strength: 10;
+  --interactive-color-strength-focus-visible: 10;
+  @include interactive-states("&");
+}
+
+/// Navigation Link Animation Module
+/// =============================================================================
+/// This module provides a mixin for creating animated navigation links with color transitions.
+///
+/// @group navigation
+/// @author Georgi
+
+/// Link Navigation Animation Mixin
+///
+/// Applies color and background-color animations to navigation links, with support for HSL color adjustments.
+///
+/// @param {Color} $color - The base color for the link text
+/// @param {Number} $relative-value - The relative lightness adjustment value for the HSL color
+/// @param {Time} $transition-time - The duration of the color transition animation
+/// @param {Color} $bg-color [null] - The background color of the link (optional)
+///
+/// @example code-scss
+///   .nav-link {
+///     @include link-nav-animation(#007bff, 0.2, 0.3s);
+///   }
+///
+/// @example code-scss
+///   .nav-link-with-bg {
+///     @include link-nav-animation(#007bff, 0.2, 0.3s, #f8f9fa);
+///   }
+@mixin link-nav-animation(
+  $color,
+  $color-strength,
+  $transition-time,
+  $bg-color: null
+) {
+  transition: color $transition-time ease-in-out;
+
+  @if $bg-color != null {
+    background-color: $bg-color;
+    transition:
+      color $transition-time ease-in-out,
+      background-color $transition-time ease-in-out;
+  }
+
+  color: $color;
+
+  @if $color-strength != null {
+    filter: brightness($color-strength);
+  }
+}
+
+/// =============================================================================
+/// Other Components
+/// =============================================================================
+
+/// This module provides mixins for various components, including a logo box.
+///
+/// @group Component
+/// @author AI (Some of the code is generated from Phind)
+
+/// Logo Box Mixin
+///
+/// Creates a styled container for a logo with customizable padding, border radius, and border color.
+///
+/// @param {Length} $padding-h - Vertical padding
+/// @param {Length} $padding-w - Horizontal padding
+/// @param {Length} $logo-border-radius - Border radius of the logo box
+/// @param {Color} $border-color - Color of the border
+///
+/// @example code-scss
+///   .logo-container {
+///     @include logo-box(10px, 20px, 5px, #000000);
+///   }
+@mixin logo-box($padding-h, $padding-w, $logo-border-radius, $border-color) {
+  padding: $padding-h $padding-w;
+  /// Hard coded width and height
+  width: 100%;
+  height: 100%;
+
+  /// Border
+  border-radius: $logo-border-radius;
+  border: 1px $border-color solid;
+}

@@ -1,0 +1,30 @@
+{
+	"eslint.workingDirectories": [
+		{
+			"mode": "auto"
+		}
+	],
+	"cSpell.words": [
+		"clsx",
+		"colums",
+		"compat",
+		"dotfiles",
+		"fontawesome",
+		"fontsource",
+		"fortawesome",
+		"Giraudel",
+		"jscodeshift",
+		"logomark",
+		"lucide",
+		"Phind",
+		"popperjs",
+		"postbuild",
+		"relfative",
+		"swcify",
+		"swcrc",
+		"tailwindcss",
+		"turbopack",
+		"typecheck",
+		"xlarge"
+	]
+}

@@ -1,0 +1,64 @@
+@use "../abstracts" as a;
+@use "sass:list";
+/// @name grid-row-colum
+/// @group Layout
+///
+/// Creates CSS Grid where auto size for height is based
+/// on the content
+///
+/// @param {String} $gah-display-type-value - Value, grid, flex or something else, display type
+/// @param {List} $gah-colums - List that is separated with space, amount of colums and size
+/// @param {Number} $grid-row-repeat - How many times row should repeat
+/// @param {Object} $gah-display-map - Contains Map for display type from vars
+/// @param {List} $gah-display-map - Contains Map for display type from vars
+/// @example code-scss
+/// @include grid-auto-height(grid, grid-add-colum(1fr), 3, $display-type)
+/// TODO: #1 Bugg, the mixin is not taking correct if statement based on wrong parameters
+@mixin grid-row-colum(
+  $gah-display-type-value,
+  $gah-colums,
+  $gah-row-height,
+  $grid-row-repeat: null
+) {
+  display: $gah-display-type-value;
+  grid-template-columns: $gah-colums;
+
+  @if $grid-row-repeat !=null {
+    grid-template-rows: repeat($grid-row-repeat, auto);
+  } @else {
+    grid-template-rows: $gah-row-height;
+  }
+}
+
+/// @name grid-position
+/// @group Layout
+///
+/// Sets the position of an element in the grid. Where to place it :D
+///
+/// @param {Number} $col-start - Starts from grid number in colum
+/// @param {Number} $col-end - End to grid number in colum
+/// @param {Number} $row-start - Starts from grid number in row
+/// @param {Number} $row-end - End to grid number in row
+/// @example code-scss
+/// @include grid-auto-height(grid, grid-add-colum(1fr), 3, $display-type)
+@mixin grid-position($col-start, $col-end, $row-start, $row-end) {
+  grid-column: list.slash($col-start, $col-end);
+  grid-row: list.slash($row-start, $row-end);
+}
+
+/// Ai Generated from Phind
+/// @name container-query
+/// @group Layout
+///
+/// We are setting an container query and based on min and max values
+/// we are passing content further using @content code
+///
+/// @param {String} $container-name - Container name (Wrapper name)
+/// @param {String} $min - Minimum width of the container
+/// @param {String} $max - Maximum width of the container
+/// @example code-scss
+/// @include a.container-query(header,0, 768px){
+///  .header-navigation{
+///   background-color: blue;
+///  }
+/// }

@@ -1,0 +1,15 @@
+.mobile-menu {
+  & {
+     @apply @xlarge/header:hidden;
+  }
+
+  &__bars__icon {
+    @apply text-center p-[0.75em] cursor-pointer text-grey-700;
+
+    /// Show the mobile link
+    @apply @medium/header:pl-[15%] block h-22 p-0;
+
+    /// Remove the spacing to mobile link, because the text Dark-mode is out of space
+    @apply @small/header:pl-sm p-30 ;
+  }
+}

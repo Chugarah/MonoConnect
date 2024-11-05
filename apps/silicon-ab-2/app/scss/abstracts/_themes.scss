@@ -1,0 +1,57 @@
+@use "sass:color";
+@use "_colors" as c;
+
+/// =============================================================================
+/// Light Theme
+/// =============================================================================
+$light-theme: (
+  bg-color: c.$color-white,
+  section-color: c.$grey-100,
+  navigation: c.$grey-800,
+  forms: c.$grey-700,
+  display-headings: c.$grey-900,
+  icon-color: c.$grey-800,
+  icon-bg-color: c.$grey-100,
+  icon-bg-color-b: c.$grey-100,
+  special-text-a: c.$grey-750,
+  special-text-b: c.$grey-750,
+  cards-color-a: c.$color-white,
+  cards-color-border-active: c.$color-transparent,
+  cards-color-border: c.$grey-100,
+  cards-color-border-shadow: c.$grey-300,
+  form-input-color: c.$color-white,
+  form-input-border-color: c.$grey-400,
+  subscription-section: c.$grey-100,
+);
+
+$dark-theme: (
+  bg-color: c.$grey-900,
+  section-color: rgba(c.$grey-900, 0.96),
+  navigation: c.$color-white,
+  forms: rgba(c.$color-white, 0.7),
+  display-headings: c.$color-white,
+  icon-color: c.$color-white,
+  icon-bg-color: rgba(c.$color-white, 0.05),
+  special-text-a: rgba(c.$color-white, 0.6),
+  special-text-b: c.$grey-750,
+  cards-color-a: rgba(c.$color-white, 0.04),
+  icon-bg-color-b: rgba(c.$color-primary, 0.08),
+  cards-color-border-active: rgba(c.$color-white, 0.15),
+  cards-color-border: rgba(c.$color-white, 0.15),
+  cards-color-border-shadow: rgba(c.$color-white, 0.65),
+  form-input-color: rgba(c.$color-white, 0.02),
+  form-input-border-color: rgba(c.$color-white, 0.15),
+  subscription-section: rgba(c.$color-white, 0.04),
+);
+
+// Funktion för att hämta temafärger
+@function theme-color($var-key) {
+  @return var(--#{$var-key});
+}
+
+// Mixin för att generera tema-variabler
+@mixin generate-theme-vars($theme) {
+  @each $var-key, $value in $theme {
+    --#{$var-key}: #{$value};
+  }
+}

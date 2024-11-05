@@ -1,0 +1,28 @@
+{
+	"extends": ["@typescript-eslint/parser"],
+	"parserOptions": {
+		"project": "./tsconfig.json",
+		"ecmaVersion": 2022,
+		"sourceType": "module"
+	},
+	"settings": {
+		"import/resolver": {
+			"typescript": {
+				"project": "./tsconfig.json"
+			}
+		},
+		"jsdoc": {
+			"mode": "typescript"
+		}
+	},
+	"rules": {
+		"@typescript-eslint/consistent-type-imports": [
+			"warn",
+			{
+				"prefer": "type-imports",
+				"fixStyle": "inline-type-imports"
+			}
+		],
+		"@typescript-eslint/no-import-type-side-effects": "warn"
+	}
+}

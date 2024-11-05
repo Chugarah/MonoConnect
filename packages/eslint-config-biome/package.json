@@ -1,0 +1,22 @@
+{
+	"name": "@repo/eslint-config-biome",
+	"version": "1.0.0",
+	"private": true,
+	"exports": {
+		"./base": "./base.json",
+		"./typescript": "./typescript.json",
+		"./react": "./react.json"
+	},
+	"files": [
+		"base.json",
+		"typescript.json",
+		"react.json"
+	],
+	"dependencies": {
+		"@typescript-eslint/eslint-plugin": "^8.12.2",
+		"@typescript-eslint/parser": "^8.12.2"
+	},
+	"peerDependencies": {
+		"typescript": ">=5.0.0"
+	}
+}

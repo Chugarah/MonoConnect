@@ -1,0 +1,28 @@
+/// =============================================================================
+/// Layout
+/// =============================================================================
+
+/// @name container-query-wrapper
+/// @group Layout
+///
+/// Creates a container for container queries
+///
+/// This mixin sets up a container to be used with CSS Container Queries.
+/// It sets the container-type to inline-size and assigns a custom container-name.
+///
+/// @param {String} $container-name - The name of the container to be used in container queries
+///
+/// @example code-scss
+///   .my-component {
+///     @include container-query-wrapper('component-container');
+///   }
+///
+/// @example code-css
+///   .my-component {
+///     container-type: inline-size;
+///     container-name: component-container;
+///   }
+@mixin container-query-wrapper($container-name) {
+  container-type: inline-size;
+  container-name: $container-name;
+}

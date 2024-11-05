@@ -1,0 +1,91 @@
+@use "sass:map";
+@use "../abstracts/_variables" as a;
+@use "../abstracts/_colors" as c;
+/// =============================================================================
+/// Font Awesome
+/// =============================================================================
+
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  src:
+    url(map.get($map: a.$font-awesome-src, $key: "fa-solid-900-woff2"))
+      format("woff2"),
+    url(map.get($map: a.$font-awesome-src, $key: "fa-solid-900-ttf"))
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 400;
+  src:
+    url(map.get($map: a.$font-awesome-src, $key: "fa-regular-400-woff2"))
+      format("woff2"),
+    url(map.get($map: a.$font-awesome-src, $key: "fa-regular-400-ttf"))
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+  src:
+    url(map.get($map: a.$font-awesome-src, $key: "fa-brands-400-woff2"))
+      format("woff2"),
+    url(map.get($map: a.$font-awesome-src, $key: "fa-brands-400-ttf"))
+      format("truetype");
+}
+
+/// Some selectors that will enable correct font depending on icon type
+.fa-solid-base {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.fa-regular-base {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 400;
+}
+
+.fa-brand-base {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+}
+
+/// =============================================================================
+/// Default Font
+/// =============================================================================
+$core-font-size: 16px;
+
+/// Font Settings Mixin :)
+@mixin font-settings($fs-size: null, $fs-color: null, $fs-weight: null) {
+  font-size: $fs-size;
+  color: $fs-color;
+  font-weight: $fs-weight;
+}
+
+/// Default H1 Font Settings
+h1 {
+  @apply text-h-1 text-grey-900 font-ExtraBold;
+}
+/// Default H2 Font Settings
+h2 {
+  @apply text-h-2 text-grey-900 font-ExtraBold;
+}
+/// Default H4 Font Settings
+h3 {
+  @apply text-h-3 text-grey-300 font-ExtraBold;
+}
+/// Default H4 Font Settings
+h4 {
+  @apply text-h-4 text-grey-900 font-ExtraBold;
+}
+
+/// Default H5 Font Settings
+h5 {
+  @apply text-h-5 text-grey-900 font-ExtraBold;
+}
+
+/// Default p tag Font Settings
+p {
+  @apply text-t-l text-grey-700 font-Regular;
+}

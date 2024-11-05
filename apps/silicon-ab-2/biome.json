@@ -1,0 +1,37 @@
+{
+  "extends": ["@repo/biome-config/biome"],
+  "files": {
+    "ignore": [
+      "**/*.md",
+      "**/*.mdx",
+      "**/*.svg",
+      "**/*.png",
+      "**/*.jpg",
+      "**/*.jpeg",
+      "**/*.gif",
+      "**/*.ico",
+      "**/*.woff",
+      "**/*.woff2",
+      "**/*.ttf",
+      "**/*.eot",
+      "**/*.env*",
+      "**/*.log",
+      "**/README.md",
+      "**/.gitignore",
+      "**/.npmrc",
+      "**/.env*",
+      "**/.editorconfig",
+      "**/.eslintrc*",
+      "**/.prettierrc*",
+      "**/LICENSE",
+      "**/.next/**",
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/coverage/**",
+      "**/storybook-static/**",
+      "**/.git/**"
+    ],
+    "ignoreUnknown": true
+  }
+}

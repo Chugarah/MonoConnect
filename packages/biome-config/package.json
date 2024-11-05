@@ -1,0 +1,9 @@
+{
+  "name": "@repo/biome-config",
+  "version": "1.0.0",
+  "private": true,
+  "exports": {
+    "./biome": "./biome.json"
+  },
+  "files": ["biome.json"]
+}

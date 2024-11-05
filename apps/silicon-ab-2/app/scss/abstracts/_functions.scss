@@ -1,0 +1,176 @@
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
+@use "sass:color";
+@use "sass:map";
+@use "../base/_typography" as t;
+@use "_image-paths" as i;
+
+/// Layout Module
+/// =============================================================================
+/// This module provides utility functions for creating lists in Sass.
+/// Inspired by https://sass-lang.com/documentation/values/functions/
+///
+/// @group Layout
+/// @since 0.02
+
+/// Creates a list from given values
+///
+/// @param {...string} $values - Comma-separated list of values
+/// @return {list} A list of the provided values separated by spaces
+/// @access public
+/// @example code-scss
+///   grid-template-columns: create-list(1fr, 2fr, 1fr);
+@function create-list($values...) {
+  $list: ();
+
+  /// Iterate through each value and list.append it to the list
+  @each $value in $values {
+    $list: list.append($list, $value, space);
+  }
+
+  @return $list;
+}
+
+/// =============================================================================
+/// Color Functions
+/// =============================================================================
+
+/// Color Module
+/// =============================================================================
+/// This module provides utility functions for color manipulation.
+///
+/// @group color
+/// @author Georgi
+
+/// Converts a hexadecimal color value to an rgba color value with the specified opacity.
+///
+/// @name hex-to-rgb
+/// @function
+/// @group Color
+///
+/// @param {Color} $color - The hexadecimal color to convert
+/// @param {Number} $opacity - The opacity value (0-1) to apply to the color
+///
+/// @return {Color} The rgba color value
+///
+/// @example code-scss
+///   $background-color: hex-to-rgb(#ff0000, 0.5);
+///   // Returns: rgba(255, 0, 0, 0.5)
+@function hex-to-rgb($color, $opacity) {
+  $red: red($color);
+  $green: green($color);
+  $blue: blue($color);
+  @return "rgba(#{$red}, #{$green}, #{$blue}, #{$opacity})";
+}
+
+/// =============================================================================
+/// Layout Functions
+
+/// Layout Functions Module
+/// =============================================================================
+/// Unit Conversion Module
+/// =============================================================================
+/// This module provides a function for converting pixel values to rem or em units.
+/// Inspired by AI Phind and updated for improved functionality.
+///
+/// @group utilities
+/// @author Georgi
+
+/// Convert unit function
+///
+/// Converts a pixel value to either rem or em units based on the core font size.
+///
+/// @param {String} $size - The size key from the s.$space-values map
+/// @param {String} $unit [em] - The unit to convert to ('rem' or 'em')
+///
+/// @throws Will throw an error if an invalid size is provided
+/// @throws Will throw an error if a unit other than 'rem' or 'em' is provided
+///
+/// @return {String} The converted value with the specified unit
+///
+/// @example code-scss
+///   $converted-value: spacing('medium', rem);
+///   // Returns: 1.5rem (assuming 'medium' is 24px and $core-font-size is 16px)
+///
+/// @example code-scss
+///   $converted-value: spacing('large');
+///   // Returns: 2em (assuming 'large' is 32px and $core-font-size is 16px)
+@function spacing($size, $unit: em) {
+  $value: $size;
+
+  @if map.has-key(s.$space-values, $size) {
+    $value: map.get(s.$space-values, $size);
+  }
+
+  // Use the strip-unit function to ensure we have a clean number
+  $value: strip-unit($value);
+  $core-font-size: strip-unit(t.$core-font-size);
+
+  $calculated-value: math.div($value, $core-font-size);
+
+  @if $unit == rem {
+    @return #{$calculated-value}rem;
+  } @else if $unit == em {
+    @return #{$calculated-value}em;
+  } @else {
+    @error "Please use 'em' or 'rem' as unit";
+  }
+}
+
+/// Unit Manipulation Module
+/// =============================================================================
+/// This module provides utility functions for manipulating units in Sass.
+///
+/// @group utilities
+/// @author Kitty Giraudel
+
+/// Remove the unit of a length
+///
+/// This function removes the unit from a given number, returning a math.is-unitless value.
+///
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} math.is-unitless number
+///
+/// @example code-scss
+///   $result: strip-unit(16px);
+///   // $result: 16
+///
+/// @example code-scss
+///   $result: strip-unit(1.5em);
+///   // $result: 1.5
+///
+/// @credit Kitty Giraudel
+@function strip-unit($number) {
+  @if meta.type-of($number) == "number" and not math.is-unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
+
+  @return $number;
+}
+
+/// Inspired by this
+/// https://sass-lang.com/documentation/modules/color/
+/// And debugged with Phind AI
+
+@function to-hsla($color, $alpha: 1) {
+  // Konvertera till RGB-format
+  $rgb-color: color.to-space($color, rgb);
+
+  // Extrahera RGB-värden med color.channel()
+  $red: color.channel($rgb-color, "red");
+  $green: color.channel($rgb-color, "green");
+  $blue: color.channel($rgb-color, "blue");
+
+  // Returnera som RGBA
+  @return rgba($red, $green, $blue, $alpha);
+}
+
+@function get-image-path($category, $type, $theme) {
+  $category-map: map.get(i.$image-paths, $category);
+  @if $type {
+    $type-map: map.get($category-map, $type);
+    @return map.get($type-map, $theme);
+  }
+  @return map.get($category-map, $theme);
+}

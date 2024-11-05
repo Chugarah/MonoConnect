@@ -1,0 +1,51 @@
+{
+	"name": "ec-mini-project-joakim",
+	"description": "This is an mini project form EC education .NET Core Webb development. Started from an boilerplate from João Paulo Moraes, https://github.com/joaopaulomoraes",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"author": {
+		"name": "Joakim",
+		"url": "https://ec.omniway.se/faq/teachers#qc2685938"
+	},
+	"youtube": {
+		"url": "https://www.youtube.com/watch?v=us4fVtDwC10",
+		"title": "8. Recap - Mini projekt"
+	},
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"serve": "vite preview",
+		"test": "vitest",
+		"test:ui": "vitest --ui",
+		"lint": "eslint src --max-warnings=0",
+		"typecheck": "tsc --project tsconfig.json --noEmit"
+	},
+	"dependencies": {
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"uuid": "^11.0.2"
+	},
+	"devDependencies": {
+		"@repo/biome-config": "workspace:*",
+		"@repo/eslint-config": "workspace:*",
+		"@repo/eslint-config-biome": "workspace:*",
+		"@repo/jest-presets": "workspace:*",
+		"@repo/typescript-config": "workspace:*",
+		"@testing-library/jest-dom": "^6.6.2",
+		"@testing-library/react": "^16.0.1",
+		"@types/node": "^22.8.5",
+		"@types/react": "^18.3.12",
+		"@types/react-dom": "^18.3.1",
+		"@vitejs/plugin-react-swc": "^3.7.1",
+		"@vitest/ui": "^2.1.4",
+		"autoprefixer": "^10.4.20",
+		"happy-dom": "^15.7.4",
+		"postcss": "^8.4.47",
+		"tailwindcss": "^3.4.14",
+		"typescript": "^5.6.3",
+		"vite": "^5.4.10",
+		"vite-tsconfig-paths": "^5.0.1",
+		"vitest": "^2.1.4"
+	}
+}

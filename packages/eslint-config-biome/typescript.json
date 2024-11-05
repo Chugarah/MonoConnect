@@ -1,0 +1,41 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint", "import", "jsdoc"],
+	"extends": [
+		"./base.json",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking",
+		"plugin:jsdoc/recommended-typescript"
+	],
+	"settings": {
+		"import/resolver": {
+			"typescript": true,
+			"node": true
+		},
+		"jsdoc": {
+			"mode": "typescript"
+		}
+	},
+	"rules": {
+		"@typescript-eslint/no-unused-vars": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"jsdoc/require-param-type": "off",
+		"jsdoc/require-returns-type": "off",
+		"import/no-unresolved": "off",
+		"@typescript-eslint/consistent-type-imports": [
+			"warn",
+			{
+				"prefer": "type-imports",
+				"fixStyle": "inline-type-imports"
+			}
+		],
+		"@typescript-eslint/no-import-type-side-effects": "warn"
+	},
+	"parserOptions": {
+		"ecmaVersion": 2022,
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	}
+}

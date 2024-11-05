@@ -1,0 +1,13 @@
+.button-primary {
+  & {
+    @apply gap-3;
+  }
+
+  &:focus-visible {
+    @apply outline-none ring-2 ring-theme-light-primary ring-offset-2;
+  }
+
+  &__user-icon {
+    @apply w-[1.125em] h-[1.125em] !important;
+  }
+}

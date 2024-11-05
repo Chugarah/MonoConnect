@@ -1,0 +1,19 @@
+@use "sass:map";
+
+// Image paths
+$image-paths: (
+  "logo": (
+    "light": "/images/logos/logo.svg",
+    "dark": "/images/logos/logo-dark.svg"
+  ),
+  "store-buttons": (
+    "android": (
+      "light": "/images/store-buttons/app-android-store-btn-group.svg",
+      "dark": "/images/store-buttons/app-android-store-btn-group-dark.svg"
+    ),
+    "apple": (
+      "light": "/images/store-buttons/app-store-btn-group.svg",
+      "dark": "/images/store-buttons/app-store-btn-group-dark.svg"
+    )
+  )
+);
