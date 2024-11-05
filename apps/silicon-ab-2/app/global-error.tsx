@@ -2,6 +2,32 @@
 
 import { useEffect } from "react";
 
+/**
+ * Global Error Boundary Component
+ *
+ * @description This component serves as the top-level error boundary for the entire application.
+ * It catches and handles any unhandled errors that occur during rendering or in event handlers.
+ * The component provides a user-friendly error interface with options to retry or return home.
+ *
+ * Features:
+ * - Displays a visually appealing error message with icon
+ * - Shows error digest ID when available for debugging
+ * - Provides "Try Again" and "Return Home" actions
+ * - Logs errors to console (can be extended to error reporting service)
+ * - Fully responsive design with Tailwind CSS
+ *
+ * @example
+ * ```tsx
+ * // This component is automatically used by Next.js when an error occurs
+ * // No manual implementation required
+ * ```
+ *
+ * @param {Object} props - Component props
+ * @param {Error & { digest?: string }} props.error - The error object that was caught
+ * @param {Function} props.reset - Function to reset the error boundary and retry rendering
+ *
+ * @returns {React.ReactElement} A full-page error UI with recovery options
+ */
 export default function GlobalError({
 	error,
 	reset,
