@@ -14,6 +14,6 @@
   }
 
   body {
-    @apply bg-theme-light-bg-color text-theme-light-foreground-color;
+    @apply bg-theme-light-bg-color text-theme-light-foreground-color overflow-hidden;
   }
 }

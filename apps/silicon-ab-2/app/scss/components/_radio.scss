@@ -1,8 +1,9 @@
 /// Switch
 /// Used ChadCDN/UI
+@use "../abstracts" as a;
 .theme-switch {
   &__root {
-    @apply inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors;
+    @apply inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors shadow-lg;
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
     @apply disabled:cursor-not-allowed disabled:opacity-50;
 

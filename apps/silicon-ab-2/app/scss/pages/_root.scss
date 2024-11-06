@@ -47,7 +47,6 @@ $_grid-max-width: 46.625rem;
 /// Setting Background color
 /// and sets the container name for container query /responsive
 .header-wrapper {
-
   container-type: inline-size;
   container-name: header;
   background: radial-gradient(
@@ -56,13 +55,13 @@ $_grid-max-width: 46.625rem;
     rgba(218, 70, 239, 0.05) 42%,
     rgba(241, 244, 253, 0.07) 83%
   );
-  @apply bg-theme-light-bg-color dark:bg-theme-dark-bg-color;
+  @apply bg-theme-light-bg-color dark:bg-theme-dark-bg-color min-w-mobile ;
 }
 
 .header,
 .hero-section {
   /// Default/Mobile styles
-  @apply justify-between w-full px-[0.625em] m-auto;
+  @apply justify-between w-full px-[0.625em] m-auto min-w-[24.375rem];
 
   /// Tablet breakpoint
   @apply @medium/header:max-w-tablet;

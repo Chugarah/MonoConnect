@@ -48,7 +48,7 @@ function LogoImages({
 
 	return (
 		<div className={className}>
-			<Image src={imageSrc} alt={alt} width={width} height={height} />
+			<Image src={imageSrc} alt={alt} width={width} height={height} priority />
 		</div>
 	);
 }

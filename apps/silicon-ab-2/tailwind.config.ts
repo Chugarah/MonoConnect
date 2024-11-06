@@ -164,6 +164,15 @@ const spacing = {
 	"sb-3-00": "3rem", // 48px
 	"sb-3-31": "3.125rem", // 50px
 	"sb-5-00": "5rem", // 80px
+
+	// Size
+	mobile: "24.375rem",
+	small: "31.25rem",
+	medium: "48rem",
+	xlarge: "75rem",
+	"xlarge-1": "81.1875rem",
+	"xlarge-2": "83.75rem",
+	"xlarge-3": "88.75rem",
 };
 
 const config: Config = {
@@ -177,6 +186,9 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			boxShadow: {
+				secondary: "0 1px 4px 0 rgba(57, 69, 90, 0.3)",
+			},
 			containers: {
 				mobile: "24.375rem",
 				small: "31.25rem",

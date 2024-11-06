@@ -4,6 +4,7 @@ import NavGroup from "@/app/components/forms/NavGroup";
 import MobileMenu from "@/app/components/MobileMenu";
 import ThemeImages from "@/app/components/common/ThemeImages";
 import LogoImages from "@/app/components/header/LogoImages";
+import Hero from "@/app/components/hero/Hero";
 
 /**
  * Header component that contains the main navigation and branding elements
@@ -30,7 +31,33 @@ import LogoImages from "@/app/components/header/LogoImages";
  * }
  * ```
  *
+ * @component
+ * @see {@link LogoImages} For the theme-aware logo component
+ * @see {@link Menu} For the main navigation menu component
+ * @see {@link NavGroup} For user controls like signup and theme switching
+ * @see {@link MobileMenu} For the responsive mobile menu component
+ * @see {@link Hero} For the hero section component
+ *
  * @returns {React.ReactElement} The header component with navigation and branding
+ *
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <Header />
+ *
+ * // Within a layout
+ * <div className="app-layout">
+ *   <Header />
+ *   <main>{children}</main>
+ *   <Footer />
+ * </div>
+ * ```
+ *
+ * @accessibility
+ * - Uses semantic HTML5 <header> and <nav> elements
+ * - Includes ARIA labels for navigation regions
+ * - Supports keyboard navigation
+ * - Implements proper heading hierarchy
  */
 function Header() {
 	return (
@@ -49,6 +76,7 @@ function Header() {
 				<NavGroup />
 				<MobileMenu />
 			</nav>
+			<Hero />
 		</header>
 	);
 }
