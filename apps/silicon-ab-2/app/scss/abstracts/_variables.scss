@@ -80,6 +80,20 @@ $display-type: (
 );
 
 
+/// Breakpoints Container Size
+$bp-mobile: 390px;
+$bp-small: 500px;
+$bp-medium: 768px;
+$bp-xlarge: 1200px;
+$bp-xlarge-1: 1299px;
+$bp-xlarge-2: 1340px;
+$bp-xlarge-3: 1420px;
+
+/// Container Name
+$container-header: "header";
+
+
+
 
 /// @name spacing-distance-relative
 /// Maps for different gaps size based on the layout

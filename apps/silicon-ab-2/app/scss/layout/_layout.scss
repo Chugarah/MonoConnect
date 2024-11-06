@@ -26,3 +26,35 @@
   container-type: inline-size;
   container-name: $container-name;
 }
+
+/// @name container-query
+/// @group Layout
+///
+/// Container Query for responsive design, we check the with of container
+/// and sending the container further, got help also from Phind for the part
+/// where #{$max -1} to avoid clipping, layout changing i mid while going to
+/// next breakpoint
+///
+/// @param {String} $container-name - The name of the container to be used in container queries
+/// @param {String} $min - Min With of container size
+/// @param {String} $max - Max With of container size, this also could be null
+/// @example code-scss
+/// Phones
+///  @include a.container-query(header,0,map-get($map: $breakpoints, $key: 'medium')){
+///    .header-navigation{
+///      background-color: red;
+///    }
+///  }
+@mixin container-query($container-name, $min, $max: null) {
+  @if $max {
+    @container #{$container-name} (min-width: #{$min}) and (max-width: #{$max - 1}) {
+      /// Passing the content further
+      @content;
+    }
+  } @else if $min {
+    @container #{$container-name} (min-width: #{$min}) {
+      /// Passing the content further
+      @content;
+    }
+  }
+}

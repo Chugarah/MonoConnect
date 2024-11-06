@@ -61,14 +61,10 @@ $_grid-max-width: 46.625rem;
 .header,
 .hero-section {
   /// Default/Mobile styles
-  @apply justify-between w-full px-[0.625em] m-auto min-w-[24.375rem];
-
-  /// Tablet breakpoint
-  @apply @medium/header:max-w-tablet;
+  @apply justify-between w-full px-[0.625em] m-auto min-w-[24.375rem] w-full max-w-desktop
 
   /// Desktop breakpoint
-  @apply @xlarge/header:max-w-desktop px-[2.5em];
+  @w-xlarge-1/header:max-w-desktop px-[2.5em]
 
-  /// Transitions
-  @apply transition-all duration-200;
+  ;
 }

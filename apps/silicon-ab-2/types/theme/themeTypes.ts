@@ -1,3 +1,6 @@
+import type { Button } from "@/components/ui/button";
+import type { IconDefinition } from "@fortawesome/free-regular-svg-icons";
+
 /**
  * Theme type representing the available theme options
  *
@@ -53,7 +56,7 @@ export interface ThemeContextType {
  * };
  * ```
  */
-export interface ThemeImages {
+export interface ThemeImagesFiles {
 	light: string;
 	dark: string;
 }
@@ -90,4 +93,19 @@ export interface ThemeImageProps {
 	width?: number;
 	height?: number;
 	className?: string;
+	fill?: boolean;
+}
+
+export interface IconFAProps {
+	icon: IconDefinition;
+	classNames: string;
+	title?: string;
+}
+
+/// Used AI Phind with this one 100%
+export interface FormButtonIconProps
+	extends React.ComponentPropsWithoutRef<typeof Button> {
+	icon?: IconDefinition;
+	iconPosition?: "left" | "right" | "hidden";
+	iconClassName?: string;
 }

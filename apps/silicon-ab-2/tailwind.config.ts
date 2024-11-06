@@ -150,6 +150,7 @@ const spacing = {
 	"148": "9.25rem", // 148px
 	"150": "9.375rem", // 150px
 	"416": "26rem", // 416px
+	"510": "31.875rem;", // 510px
 
 	// Spacing base values
 	"sb-0-18": "0.1875rem", // 3px
@@ -191,10 +192,10 @@ const config: Config = {
 			},
 			containers: {
 				mobile: "24.375rem",
-				small: "31.25rem",
+				small: "31.25rem", // 500px
 				medium: "48rem",
 				xlarge: "75rem",
-				"xlarge-1": "81.1875rem",
+				"xlarge-1": "81.1875rem", /// 1 299px
 				"xlarge-2": "83.75rem",
 				"xlarge-3": "88.75rem",
 			},
@@ -216,20 +217,25 @@ const config: Config = {
 				ExtremeBold: "900",
 			},
 			fontSize: {
+				// Text sizes
 				"t-xs": "0.75rem",
 				"t-s": "0.875rem",
 				"t-m": "1rem",
 				"t-l": "1.125rem",
-				"t-xl": "1.25rem",
+				"t-xl": "125rem",
 				"t-lt": "1.5rem",
+
+				// Display headings
 				"d-1": "5rem",
 				"d-2": "4.5rem",
 				"d-3": "4rem",
 				"d-4": "3.5rem",
 				"d-5": "3rem",
-				"d-6": "2.625rem",
-				"d-7": "2.76875rem",
-				"d-8": "2.13125rem",
+				"d-6": "2.625em",
+				"d-7": "2.76875em",
+				"d-8": "2.13125em",
+
+				// Headings
 				"h-1": "2.5rem",
 				"h-2": "2rem",
 				"h-3": "1.75rem",
@@ -298,12 +304,15 @@ const config: Config = {
 				desktop: "81.25rem", // 1300px
 				tablet: "48rem", // 768px
 				mobile: "24.375rem", // 390px
+				"1/4": "25%",
+				"2/4": "50%",
+				"3/4": "75%",
 			},
 		},
 	},
 	plugins: [
 		require("tailwindcss-animate"),
-		require("@tailwindcss/container-queries"),
+		require("tailwind-container-queries-2d"),
 	],
 };
 export default config;

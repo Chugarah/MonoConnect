@@ -55,13 +55,11 @@ const buttonVariants = cva(
 				link: "text-primary underline-offset-4 hover:underline",
 				"button-primary": `
 					transition-all duration-500 ease-out
-					ml-[1.875em]
 					bg-theme-light-primary
 					text-theme-light-primary-foreground
 					rounded-lg
 					will-change-[color,background-color]
 					hover:bg-theme-light-primary/90
-
 				`,
 			},
 			size: {

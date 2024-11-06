@@ -12,7 +12,7 @@
  * @property {string} androidStore.light - Path to light theme Play Store button
  * @property {string} androidStore.dark - Path to dark theme Play Store button
  */
-const ThemeImages = {
+const ThemeImagesFiles = {
 	logo: {
 		light: "/svg/logo.svg",
 		dark: "/svg/logo-dark.svg",
@@ -27,4 +27,4 @@ const ThemeImages = {
 	},
 } as const;
 
-export default ThemeImages;
+export default ThemeImagesFiles;

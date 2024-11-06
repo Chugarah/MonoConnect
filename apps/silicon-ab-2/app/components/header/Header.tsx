@@ -2,9 +2,10 @@ import React from "react";
 import Menu from "@/app/components/header/Menu";
 import NavGroup from "@/app/components/forms/NavGroup";
 import MobileMenu from "@/app/components/MobileMenu";
-import ThemeImages from "@/app/components/common/ThemeImages";
-import LogoImages from "@/app/components/header/LogoImages";
+
 import Hero from "@/app/components/hero/Hero";
+import ThemeImagesFiles from "@/app/components/common/ThemeImagesFiles";
+import ThemeImages from "@/app/components/header/ThemeImages";
 
 /**
  * Header component that contains the main navigation and branding elements
@@ -63,9 +64,9 @@ function Header() {
 	return (
 		<header aria-label="Navigation & Logo" className="header-wrapper">
 			<nav className="header" aria-label="Menu Navigation">
-				<LogoImages
-					lightSrc={ThemeImages.logo.light}
-					darkSrc={ThemeImages.logo.dark}
+				<ThemeImages
+					lightSrc={ThemeImagesFiles.logo.light}
+					darkSrc={ThemeImagesFiles.logo.dark}
 					alt="Logo"
 					width={140}
 					height={52}

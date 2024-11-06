@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch } from "@/app/components/forms/switch";
-import FormButton from "@/app/components/forms/FormButton";
+import ButtonForm from "@/app/components/forms/ButtonForm";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 function NavGroup() {
 	return (
@@ -9,7 +10,12 @@ function NavGroup() {
 			<span className="header__nav-group__text-span"> Dark Mode </span>
 			<Switch />
 			{/* Sign in Button */}
-			<FormButton className="header__nav-group__btn-sign-in" />
+			<ButtonForm
+				title="Hello"
+				className="button-primary"
+				iconPosition="left"
+				icon={faUser}
+			/>
 
 			<a className="header__nav-group__bars" href="/" title="Mobile Menu">
 				<i className="fa-solid fa-bars header__nav-group__bars__icon" />

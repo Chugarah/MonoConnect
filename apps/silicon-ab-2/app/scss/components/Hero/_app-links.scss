@@ -1,0 +1,24 @@
+.apps-links {
+  @apply col-start-1 col-end-1 row-start-3 row-end-3 flex gap-md;
+
+  &__link-item,
+  img {
+    @apply w-[10.25em] h-[2.25em] rounded-lg;
+  }
+
+  &__button-store-link {
+    & {
+      @apply w-[11.25em] h-[3.25em] rounded-lg;
+      @apply inline-flex items-center gap-3
+     bg-theme-light-display-headings dark:bg-theme-dark-display-headings;
+    }
+
+    &:focus-visible {
+      @apply outline-none ring-2 ring-theme-light-primary ring-offset-2;
+    }
+
+    &__icon {
+      @apply w-[1.125em] h-[1.125em] flex-shrink-0;
+    }
+  }
+}

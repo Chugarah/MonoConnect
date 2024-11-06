@@ -1,3 +1,59 @@
-.hero-section{
-  background-color: red;
+@use "sass:map";
+@use "sass:meta";
+@use "../layout" as l;
+@use "../abstracts" as a;
+.hero-section {
+  /// Local vars ohyeaa :D x2
+  $max-colums: 2;
+  $max-rows: 4;
+  $hero-max-width: 31.875rem;
+
+  /// Creating Grid
+  @include l.grid-row-colum(
+    map.get($map: a.$display-type, $key: "grid"),
+    a.create-list(auto, auto),
+    a.create-list(auto, 2fr, auto),
+    $max-rows
+  );
+
+  @apply @w-xlarge-1/header:pt-150
+  @w-medium/header:pt-150 px-10
+  @w-mobile/header:pt-30 px-10;
+
+  &__heading {
+    /// @w-medium
+    @apply col-start-1 col-end-1 row-start-1 row-end-1
+      text-theme-light-display-headings
+      dark:text-theme-dark-display-headings
+      font-ExtraBold text-d-4 py-48;
+
+    /// Tablet mode :)
+    @include l.container-query(a.$container-header, 0, a.$bp-xlarge-1) {
+      @apply col-start-1 col-end-3 row-start-1 row-end-1
+        pt-0 pb-30 text-center text-d-7 max-w-3/4 m-auto;
+    }
+
+    /// Mobile Phones :)
+    @include l.container-query(a.$container-header, 0, a.$bp-medium) {
+      @apply text-d-8 max-w-full m-auto px-0;
+    }
+  }
+
+  /// Some descriptive text for the hero section
+  &__text-description {
+    @apply col-start-1 col-end-1 row-start-2 row-end-2
+    max-w-510 text-theme-light-forms dark:text-theme-dark-forms
+    font-Regular text-t-l pb-40;
+
+    /// Tablet mode :)
+    @include l.container-query(a.$container-header, 0, a.$bp-xlarge-1) {
+      @apply pt-90 pb-40;
+    }
+
+    /// Mobile Phones :)
+    @include l.container-query(a.$container-header, 0, a.$bp-medium) {
+      @apply col-start-1 col-end-3 row-start-2 row-end-2
+    pt-0 pb-40 text-center max-w-full px-10;
+    }
+  }
 }

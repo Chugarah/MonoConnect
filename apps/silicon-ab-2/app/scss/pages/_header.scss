@@ -15,12 +15,11 @@ $_grid-max-width: 46.625rem;
   @apply font-SemiBold flex items-center h-[4.75rem];
 
   /// Remove the spacing to mobile link, because the text Dark-mode is out of space
-  @apply @small/header:pr-sm;
+  @apply @w-small/header:pr-sm p-sm;
 
   // Logo
   &__logo {
     @apply mr-[3em] w-[7.625em] h-[2.75em] bg-contain bg-no-repeat bg-center;
-    background-image: var(--logo-image);
   }
 
   &__nav-group {
@@ -28,10 +27,10 @@ $_grid-max-width: 46.625rem;
     @apply flex justify-center items-center;
 
     /// Tablets & Smaller laptops
-    @apply @medium/header:flex-1 justify-end pr-sm;
+    @apply @w-medium/header:flex-1 justify-end pr-sm;
 
     /// Mobile devices
-    @apply @mobile/header:pr-0 flex-1;
+    @apply @w-mobile/header:pr-0 flex-1;
 
     &__text-span {
       @apply pr-sm text-theme-light-forms
@@ -41,11 +40,11 @@ $_grid-max-width: 46.625rem;
       @apply hidden;
 
       /// Show on medium and larger screens
-      @apply @medium/header:block;
+      @apply @w-medium/header:flex w-[6.2em];
     }
 
-    &__btn-sign-in {
-      @apply @xlarge/header:block @medium/header:hidden @mobile/header:hidden;
+    .button-primary {
+      @apply @w-xlarge-1/header:flex @w-medium/header:flex @w-mobile/header:hidden;
     }
   }
 }

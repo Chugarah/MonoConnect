@@ -13,7 +13,7 @@ import Image from "next/image";
  *
  * @example
  * ```tsx
- * <LogoImages
+ * <ThemeImages
  *   lightSrc="/images/logo-light.svg"
  *   darkSrc="/images/logo-dark.svg"
  *   alt="Company Logo"
@@ -36,21 +36,29 @@ import Image from "next/image";
  * @see {@link useThemeImages} For the hook handling theme-based image switching
  * @see {@link ThemeImageProps} For the type definition of the props
  */
-function LogoImages({
+function ThemeImages({
 	lightSrc,
 	darkSrc,
 	alt,
 	width,
 	height,
+	fill,
 	className,
 }: ThemeImageProps) {
 	const imageSrc = useThemeImages({ light: lightSrc, dark: darkSrc });
 
 	return (
 		<div className={className}>
-			<Image src={imageSrc} alt={alt} width={width} height={height} priority />
+			<Image
+				src={imageSrc}
+				alt={alt}
+				width={width}
+				height={height}
+				fill={fill}
+				priority
+			/>
 		</div>
 	);
 }
 
-export default LogoImages;
+export default ThemeImages;

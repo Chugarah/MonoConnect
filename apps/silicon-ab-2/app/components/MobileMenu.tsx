@@ -5,11 +5,7 @@ function MobileMenu() {
 	return (
 		<>
 			<a href="/" className="mobile-menu" title="Menu Link">
-				<FontAwesomeIcon
-					icon={faBars}
-					className="mobile-menu__bars__icon"
-					title="Menu Icon"
-				/>
+				<FontAwesomeIcon icon={faBars} title="Menu Icon" />
 			</a>
 		</>
 	);

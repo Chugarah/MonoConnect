@@ -9,10 +9,8 @@ $_grid-max-width: 46.625rem;
     @apply flex-1;
 
     /// Mobile Phone
-    @apply @mobile/header:hidden;
-
-    /// Desktop
-    @apply @xlarge/header:block;
+    @apply @w-medium/header:block
+   @w-medium/header:hidden;
 
     /// Navigation Items
     &__navigation {
@@ -22,7 +20,6 @@ $_grid-max-width: 46.625rem;
         @apply text-theme-light-navigation dark:text-theme-dark-navigation
         cursor-pointer transition-all duration-200;
         will-change: color;
-
 
         &:hover {
           @apply text-theme-light-primary cursor-pointer;
