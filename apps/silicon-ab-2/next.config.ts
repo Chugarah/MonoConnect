@@ -25,6 +25,13 @@ const nextConfig: NextConfig = {
 		outputStyle:
 			process.env.NODE_ENV === "production" ? "compressed" : "expanded",
 	},
+	productionBrowserSourceMaps: false,
+	webpack: (config, { dev, isServer }) => {
+		if (!dev && !isServer) {
+			config.devtool = false;
+		}
+		return config;
+	},
 };
 
 export default nextConfig;

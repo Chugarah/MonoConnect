@@ -11,26 +11,27 @@
   /// Creating Grid
   @include l.grid-row-colum(
     map.get($map: a.$display-type, $key: "grid"),
-    a.create-list(auto, auto),
+    a.create-list(1fr, 1fr),
     a.create-list(auto, 2fr, auto),
     $max-rows
   );
 
+
+
   @apply @w-xlarge-1/header:pt-150
-  @w-medium/header:pt-150 px-10
-  @w-mobile/header:pt-30 px-10;
+  @w-medium/header:pt-100 @w-mobile/header:pt-30;
 
   &__heading {
     /// @w-medium
     @apply col-start-1 col-end-1 row-start-1 row-end-1
       text-theme-light-display-headings
       dark:text-theme-dark-display-headings
-      font-ExtraBold text-d-4 py-48;
+      font-ExtraBold text-d-4 pt-48;
 
     /// Tablet mode :)
     @include l.container-query(a.$container-header, 0, a.$bp-xlarge-1) {
       @apply col-start-1 col-end-3 row-start-1 row-end-1
-        pt-0 pb-30 text-center text-d-7 max-w-3/4 m-auto;
+        pt-0 pb-30 text-center text-d-7 max-w-[70%] m-auto;
     }
 
     /// Mobile Phones :)
@@ -43,7 +44,7 @@
   &__text-description {
     @apply col-start-1 col-end-1 row-start-2 row-end-2
     max-w-510 text-theme-light-forms dark:text-theme-dark-forms
-    font-Regular text-t-l pb-40;
+    font-Regular text-t-l  pt-[1.5rem] pb-36;
 
     /// Tablet mode :)
     @include l.container-query(a.$container-header, 0, a.$bp-xlarge-1) {
@@ -54,6 +55,34 @@
     @include l.container-query(a.$container-header, 0, a.$bp-medium) {
       @apply col-start-1 col-end-3 row-start-2 row-end-2
     pt-0 pb-40 text-center max-w-full px-10;
+    }
+  }
+
+  /// Discover more...
+  &__discover-more {
+    @apply col-start-1 col-end-1 row-start-4 row-end-4
+    flex pt-[8em] pb-[3.75em] relative
+    text-theme-light-forms dark:text-theme-dark-forms;
+
+    /// Large Screens
+    @include l.container-query(a.$container-header, 0, a.$bp-xlarge-1) {
+      @apply py-40;
+    }
+
+    /// Mobile Phones :)
+    @include l.container-query(a.$container-header, 0, a.$bp-medium) {
+      @apply col-start-1 col-end-3 row-start-4 row-end-4
+      pb-30 justify-center p-30;
+    }
+
+    &__button {
+      @apply ml-0;
+    }
+
+    &__icon {
+      @apply text-theme-light-icon-color dark:text-theme-dark-icon-color
+      bg-theme-light-icon-bg-color dark:bg-theme-dark-icon-bg-color
+      p-sm rounded-full shadow-small;
     }
   }
 }

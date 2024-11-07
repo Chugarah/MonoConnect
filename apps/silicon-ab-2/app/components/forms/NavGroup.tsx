@@ -16,10 +16,6 @@ function NavGroup() {
 				iconPosition="left"
 				icon={faUser}
 			/>
-
-			<a className="header__nav-group__bars" href="/" title="Mobile Menu">
-				<i className="fa-solid fa-bars header__nav-group__bars__icon" />
-			</a>
 		</div>
 	);
 }

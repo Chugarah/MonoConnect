@@ -1,5 +1,16 @@
+@use "@scss/layout" as l;
+@use "@scss/abstracts" as a;
+
 .apps-links {
-  @apply col-start-1 col-end-1 row-start-3 row-end-3 flex gap-md;
+  @apply col-start-1 col-end-1 row-start-3 row-end-3 flex gap-md ;
+
+  /// Tablets & Smaller laptops
+  @apply @w-medium/header:gap-sm;
+
+  @include l.container-query(a.$container-header, 0, a.$bp-medium) {
+    @apply col-start-1 col-end-3 row-start-3 row-end-3
+    flex-col items-center;
+  }
 
   &__link-item,
   img {
@@ -7,10 +18,13 @@
   }
 
   &__button-store-link {
-    & {
-      @apply w-[11.25em] h-[3.25em] rounded-lg;
-      @apply inline-flex items-center gap-3
+    @apply w-[12.25em] h-[4.25em] rounded-lg ml-0;
+    @apply inline-flex items-center gap-3
      bg-theme-light-display-headings dark:bg-theme-dark-display-headings;
+
+    /// Mobile Phones :)
+    @include l.container-query(a.$container-header, 0, a.$bp-medium) {
+      @apply w-[22.9em] h-[3.150625em];
     }
 
     &:focus-visible {

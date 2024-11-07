@@ -12,10 +12,7 @@ $_grid-max-width: 46.625rem;
 
 .header {
   /// Basic font, height and flex
-  @apply font-SemiBold flex items-center h-[4.75rem];
-
-  /// Remove the spacing to mobile link, because the text Dark-mode is out of space
-  @apply @w-small/header:pr-sm p-sm;
+  @apply font-SemiBold flex items-center h-[4.75rem] ;
 
   // Logo
   &__logo {
@@ -30,21 +27,19 @@ $_grid-max-width: 46.625rem;
     @apply @w-medium/header:flex-1 justify-end pr-sm;
 
     /// Mobile devices
-    @apply @w-mobile/header:pr-0 flex-1;
+    @apply @w-5xs/header:flex-1 @w-mobile/header:flex-1;
 
     &__text-span {
       @apply pr-sm text-theme-light-forms
       dark:text-theme-dark-forms text-t-m font-Bold;
       @apply transition-all duration-500;
-      /// Hide on smaller screens (below medium)
-      @apply hidden;
 
       /// Show on medium and larger screens
-      @apply @w-medium/header:flex w-[6.2em];
+      @apply @w-medium/header:flex w-[6.2em] @w-5xs/header:hidden;
     }
 
     .button-primary {
-      @apply @w-xlarge-1/header:flex @w-medium/header:flex @w-mobile/header:hidden;
+      @apply @w-xlarge-1/header:flex @w-medium/header:hidden @w-mobile/header:hidden @w-5xs/header:hidden;
     }
   }
 }

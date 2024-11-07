@@ -25,6 +25,14 @@ const ThemeImagesFiles = {
 		light: "/images/store-buttons/app-android-store-btn-group.svg",
 		dark: "/images/store-buttons/app-android-store-btn-group-dark.svg",
 	},
+	heroPhone1: {
+		light: "/images/mobile-phones/iphone-1.svg",
+		dark: "/images/mobile-phones/iphone-1.svg",
+	},
+	heroPhone2: {
+		light: "/images/mobile-phones/iphone-2.svg",
+		dark: "/images/mobile-phones/iphone-2.svg",
+	},
 } as const;
 
 export default ThemeImagesFiles;

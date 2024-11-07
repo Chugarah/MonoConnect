@@ -1,12 +1,6 @@
 .mobile-menu {
-  & {
-    @apply @w-xlarge-1/header:hidden;
-  }
+  @apply @w-xlarge-1/header:hidden @w-medium/header:flex;
 
   @apply text-center p-[0.75em] cursor-pointer
     text-theme-light-forms dark:text-theme-dark-forms;
-
-  /// Show the mobile link
-  /// Tablets
-  @apply @w-medium/header:hidden;
 }

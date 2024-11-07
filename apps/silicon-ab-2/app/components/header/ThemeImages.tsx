@@ -55,6 +55,7 @@ function ThemeImages({
 				width={width}
 				height={height}
 				fill={fill}
+				quality={100}
 				priority
 			/>
 		</div>

@@ -1,4 +1,9 @@
-/// Used ChadCN UI Documentation and used 100& AI Phind helping me integrating FA-icon
+/**
+ * @fileoverview ButtonForm component that combines text with Font Awesome icons in a customizable button.
+ * Built on top of ChadCN UI Button component with Font Awesome icon integration.
+ * @module ButtonForm
+ */
+
 "use client";
 
 import * as React from "react";
@@ -9,12 +14,11 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import type { FormButtonIconProps } from "@/types/theme/themeTypes";
 
 /**
- * FormButtonIcon Component
- *
- * A reusable button component that combines text with an icon from Font Awesome.
- * The icon can be positioned either to the left or right of the text, or hidden completely.
+ * A reusable button component that combines text with a Font Awesome icon.
  *
  * @component
+ * @since 1.0.0
+ *
  * @param {Object} props - The component props
  * @param {string} [props.className] - Additional CSS classes to apply to the button
  * @param {string} [props.title="Sign in / up"] - The title/tooltip text for the button
@@ -25,16 +29,33 @@ import type { FormButtonIconProps } from "@/types/theme/themeTypes";
  * @param {React.Ref<HTMLButtonElement>} ref - Forward ref for the button element
  *
  * @example
- * ```jsx
+ * // Basic usage with default icon
+ * <ButtonForm>Sign in</ButtonForm>
+ *
+ * @example
+ * // Custom icon positioned on the right
  * <ButtonForm
- *   title="Login"
- *   icon={faUser}
+ *   icon={faLock}
  *   iconPosition="right"
- *   className="custom-class"
+ *   title="Secure Login"
  * >
- *   Login
+ *   Login Securely
  * </ButtonForm>
- * ```
+ *
+ * @example
+ * // Button with custom styling
+ * <ButtonForm
+ *   className="my-custom-class"
+ *   iconClassName="icon-custom-class"
+ *   icon={faUser}
+ * >
+ *   User Profile
+ * </ButtonForm>
+ *
+ * @returns {JSX.Element} A styled button component with optional icon
+ *
+ * @see {@link https://fontawesome.com/icons Font Awesome Icons}
+ * @see {@link Button} ChadCN UI Button component
  */
 const ButtonForm = React.forwardRef<HTMLButtonElement, FormButtonIconProps>(
 	(
@@ -54,7 +75,7 @@ const ButtonForm = React.forwardRef<HTMLButtonElement, FormButtonIconProps>(
 			variant="button-primary"
 			size="button-primary"
 			className={cn(
-				"inline-flex items-center",
+				"button-primary",
 				iconPosition === "right" ? "flex-row-reverse" : "flex-row",
 				className,
 			)}

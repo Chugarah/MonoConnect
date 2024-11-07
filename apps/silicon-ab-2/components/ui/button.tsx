@@ -52,7 +52,17 @@ const buttonVariants = cva(
 				secondary:
 					"bg-secondary text-secondary-foreground hover:bg-secondary/80",
 				ghost: "hover:bg-accent hover:text-accent-foreground",
-				link: "text-primary underline-offset-4 hover:underline",
+				// Generated using Phind AI to help me getting hover effect on Font-Awesome icon inside the chad CN Button
+				link: `
+					text-primary underline-offset-4 hover:underline p-0 m-0
+					[&_.icon-fa]:text-theme-light-icon-color dark:[&_.icon-fa]:text-theme-dark-icon-color
+					[&_.icon-fa]:bg-theme-light-icon-bg-color dark:[&_.icon-fa]:bg-theme-dark-icon-bg-color
+
+					[&_.icon-fa]:hover:text-white dark:hover:text-white
+					[&_.icon-fa]:hover:bg-theme-light-primary
+          [&_.icon-fa]:dark:hover:bg-slate-500
+					[&_.icon-fa]:active:text-theme-light-primary [&_.icon-fa]:active:brightness-90
+				`,
 				"button-primary": `
 					transition-all duration-500 ease-out
 					bg-theme-light-primary

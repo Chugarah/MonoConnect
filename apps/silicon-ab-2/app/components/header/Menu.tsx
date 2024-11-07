@@ -40,7 +40,7 @@ function Menu() {
 					initial={{ scale: 1 }}
 					whileHover={{
 						transition: {
-							duration: 0.2,
+							duration: 0.5,
 							ease: "easeInOut",
 						},
 					}}

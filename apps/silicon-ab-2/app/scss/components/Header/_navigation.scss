@@ -9,8 +9,7 @@ $_grid-max-width: 46.625rem;
     @apply flex-1;
 
     /// Mobile Phone
-    @apply @w-medium/header:block
-   @w-medium/header:hidden;
+    @apply @w-mobile/header:hidden @w-5xs/header:hidden @w-medium/header:flex;
 
     /// Navigation Items
     &__navigation {
