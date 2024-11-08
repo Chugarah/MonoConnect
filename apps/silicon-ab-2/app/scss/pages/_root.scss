@@ -56,7 +56,7 @@ $_grid-max-width: 46.625rem;
 }
 
 /// Main Section
-.company-logos {
+.company-logos, .app-features {
   @include l.responsive-container(a.$container-main);
 
 }

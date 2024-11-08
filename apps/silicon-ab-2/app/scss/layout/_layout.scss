@@ -61,7 +61,6 @@
   }
 }
 
-
 @mixin responsive-container($container-name) {
   @apply w-full max-w-desktop m-auto;
 
@@ -72,5 +71,9 @@
   /// Tablet Mode
   @include container-query($container-name, 0, a.$bp-xlarge-1) {
     @apply px-40;
+  }
+  /// Mobile Mode
+  @include container-query($container-name, 0, a.$bp-mobile) {
+    @apply px-14;
   }
 }

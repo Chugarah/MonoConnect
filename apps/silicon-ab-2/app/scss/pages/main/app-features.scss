@@ -1,0 +1,84 @@
+@use "@scss/layout" as l;
+@use "@scss/abstracts" as a;
+
+.app-features-container {
+  /// Adding flex and some padding
+  @apply flex items-start gap-[12.75em] pb-[7em];
+
+  /// Tablets & Smaller laptops
+  /// We are hiding some of the logos in smaller tablet mode
+  @include l.container-query(a.$container-main, 0, a.$bp-xlarge-1) {
+    /// Layout Settings Responsive
+    /// Text and Heading aliment
+    & div &__heading,
+    &__p-text {
+      @apply text-center;
+    }
+
+    /// Removing Image
+    &__phone-image {
+      @apply hidden;
+    }
+  }
+
+  /// Some text styling
+  & h1 {
+    /// Basic padding and theme colors for heading
+    @apply pb-22 text-theme-light-display-headings dark:text-theme-dark-display-headings;
+
+    /// Changing Heading padding based on screen size
+    @apply @w-xs/main:pt-46 @w-mobile/main:pt-46 @w-medium/main:pt-0;
+  }
+
+  & p {
+    /// Some text styling
+    @apply text-grey-600 font-Regular;
+  }
+
+  /// Card Styling
+  &__app-features-cards {
+    @apply flex items-start gap-56 pt-75 flex-wrap;
+
+    /// Adding some responsive syntax using the tailwind plugin, max width, full width and margin
+    @apply @w-xlarge-1/main:max-w-746 @w-5xs/main:max-w-full m-auto @w-medium/main:m-0;
+
+    /// Text Styling
+    & h5 {
+      @apply text-theme-light-display-headings dark:text-theme-dark-display-headings;
+    }
+  }
+
+  /// Card Container in App features
+  &__app-features-cards__card-container {
+    @apply flex items-start flex-row flex-wrap gap-[1.5625em];
+
+    /// Adding some responsive syntax using the tailwind plugin
+    @apply @w-medium/main:basis-[calc(50%-2em)]
+    @w-xlarge-1/main:basis-auto
+    @w-xlarge:justify-normal
+    @w-5xs/main:basis-full justify-center;
+
+    /// Image Beside Card content
+    &__img {
+      @apply bg-theme-light-icon-bg-color dark:bg-theme-dark-icon-bg-color
+    rounded-lg  w-auto h-auto p-20;
+    }
+  }
+
+  /// Card Items in App features
+  &__app-features-cards__card-container__card-item {
+    @apply max-w-[14.25em];
+
+    /// Adding Responsive
+    /// Padding for header container max width and auto width
+    @apply @w-xlarge-1/main:max-w-[14.25em]
+      @w-5xs/main:max-w-[70%] w-full
+      @w-medium/main:w-auto;
+  }
+
+    &__app-features-cards__card-container__card-item h5 {
+      @apply pb-[0.75em];
+    }
+
+
+}

@@ -142,6 +142,7 @@ const spacing = {
 	"52": "3.25rem", // 52px
 	"55": "3.4375rem", // 55px
 	"56": "3.5rem", // 56px
+	"60": "3.75rem", // 60px
 	"63": "3.9375rem", // 63px
 	"73": "4.5625rem", // 73px
 	"75": "4.6875rem", // 75px
@@ -156,6 +157,7 @@ const spacing = {
 	"416": "26rem", // 416px
 	"510": "31.875rem;", // 510px
 	"674": "42.125rem;", // 674px
+	"746": "46.625rem", // 746 px
 	"812": "81.25rem", // 1300px
 
 	// Spacing base values
@@ -176,9 +178,9 @@ const spacing = {
 	mobile: "24.375rem",
 	small: "31.25rem",
 	medium: "48rem",
-	xlarge: "75rem",
-	"xlarge-1": "81.1875rem",
-	"xlarge-2": "83.75rem",
+	xlarge: "75rem", // 1200px;
+	"xlarge-1": "81.1875rem", //1299px;
+	"xlarge-2": "83.75rem", // 1340px;
 	"xlarge-3": "88.75rem",
 };
 
