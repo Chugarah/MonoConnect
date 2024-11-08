@@ -1,3 +1,5 @@
+@use "@scss/abstracts" as a;
+
 /// =============================================================================
 /// Layout
 /// =============================================================================
@@ -56,5 +58,19 @@
       /// Passing the content further
       @content;
     }
+  }
+}
+
+
+@mixin responsive-container($container-name) {
+  @apply w-full max-w-desktop m-auto;
+
+  /// Large Desktop, we want some spacing so not the content gets to the limit of the browser
+  @include container-query($container-name, 0, a.$bp-xlarge-2) {
+    @apply px-14;
+  }
+  /// Tablet Mode
+  @include container-query($container-name, 0, a.$bp-xlarge-1) {
+    @apply px-40;
   }
 }

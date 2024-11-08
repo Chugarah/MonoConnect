@@ -1,5 +1,9 @@
-@forward "_root";
-@forward "_header";
-@forward "_mobile-menu";
-@forward "_hero";
+@forward "root";
+@forward "header";
+@forward "mobile-menu";
+@forward "hero";
+
+
+/// Including Sub Categories
+@use "main"
 

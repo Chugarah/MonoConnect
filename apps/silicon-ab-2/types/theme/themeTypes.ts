@@ -109,3 +109,24 @@ export interface FormButtonIconProps
 	iconPosition?: "left" | "right" | "hidden";
 	iconClassName?: string;
 }
+
+// Got inspired by AI, to create an BaseImage interface that
+// I can use it other type declarations
+export interface BaseImage {
+	id?: string;
+	name: string;
+	src: string;
+	width?: number;
+	height?: number;
+	alt: string;
+	fill?: boolean;
+}
+
+export interface CompanyLogo extends BaseImage {
+	/// Optional if we need to change image in dark mode theme
+	darkSrc?: string;
+}
+
+export type CompanyLogos = {
+	Logos: CompanyLogo[];
+};

@@ -39,20 +39,24 @@ $_grid-max-width: 46.625rem;
     rgba(218, 70, 239, 0.05) 42%,
     rgba(241, 244, 253, 0.07) 83%
   );
-  @apply bg-theme-light-bg-color dark:bg-theme-dark-bg-color overflow-hidden ;
+  @apply bg-theme-light-bg-color dark:bg-theme-dark-bg-color overflow-hidden;
 }
 
+/// Setting background color and applying container props
+.main-wrapper {
+  container-type: inline-size;
+  container-name: main;
+  @apply bg-theme-light-bg-color dark:bg-theme-dark-bg-color overflow-hidden;
+}
+
+/// Header Section
 .header,
 .hero-section {
-  /// Default/Mobile styles
-  @apply w-full max-w-desktop m-auto;
+  @include l.responsive-container(a.$container-header);
+}
 
-  /// Large Desktop, we want some spacing so not the content gets to the limit of the browser
-  @include l.container-query(a.$container-header, 0, a.$bp-xlarge-2) {
-    @apply px-14;
-  }
-    /// Tablet Mode
-  @include l.container-query(a.$container-header, 0, a.$bp-xlarge-1) {
-    @apply px-40;
-  }
+/// Main Section
+.company-logos {
+  @include l.responsive-container(a.$container-main);
+
 }

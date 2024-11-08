@@ -1,0 +1,41 @@
+@use "@scss/layout" as l;
+@use "@scss/abstracts" as a;
+
+.company-logos {
+  /// Lest's flex it and Gap it!
+  @apply flex items-center gap-md pt-75 pb-110 max-w-desktop m-auto
+    justify-center text-center;
+
+  /// Hiding and showing company logo section depending ons screen size
+  @apply @w-5xs/main:hidden @w-mobile/main:hidden @w-medium/main:flex;
+
+  /// Tablets & Smaller laptops
+  /// We are hiding some of the logos in smaller tablet mode
+  @include l.container-query(a.$container-main, 0, a.$bp-xlarge) {
+    #c-l-6,
+    #c-l-5 {
+      @apply hidden;
+    }
+    @apply pb-[3.875em];
+  }
+
+  /// Setting
+  /// Used some AI from Phind to Use Framer Motion to make it awesome :)
+  &__image-item {
+    @apply py-36 px-22 rounded-lg w-[12.25em] h-100 border
+      border-solid border-grey-300 flex items-center relative
+      transition-all duration-500 ease-in-out
+      bg-white dark:bg-[rgba(255,255,255,0.04)]
+      dark:border-[rgba(255,255,255,0.15)];
+
+    /// Hover States
+    &:hover {
+      @apply shadow-[0_0.275em_0.75em_rgba(6,3,18,0.06)]
+        bg-theme-light-primary/10 dark:bg-slate-500/20;
+    }
+
+    img {
+      @apply w-full;
+    }
+  }
+}

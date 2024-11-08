@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import "../scss/main.scss";
+import "@scss/main.scss";
 import Header from "@/app/components/header/Header";
 import MainContent from "@/app/components/layout/MainContent";
-import Footer from "@/app/components/layout/Footer";
 import { ThemeProvider } from "@/app/contexts/theme/ThemeProvider";
 
 export const metadata: Metadata = {
@@ -26,7 +25,7 @@ export default function RootLayout({
 						{/* Main Content */}
 						<MainContent>{children}</MainContent>
 						{/* Footer Content */}
-						<Footer />
+						{/* <Footer /> */}
 					</ThemeProvider>
 				</div>
 			</body>
