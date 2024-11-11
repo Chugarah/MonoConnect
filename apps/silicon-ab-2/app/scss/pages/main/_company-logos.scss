@@ -3,7 +3,7 @@
 
 .company-logos {
   /// Lest's flex it and Gap it!
-  @apply flex items-center gap-md pt-75 pb-110 max-w-desktop m-auto
+  @apply flex items-center pt-75 pb-110 max-w-desktop m-auto
     justify-center text-center;
 
   /// Hiding and showing company logo section depending ons screen size

@@ -38,7 +38,7 @@ const colors = {
 const lightTheme = {
 	"bg-color": colors.white,
 	"foreground-color": colors.grey[900],
-	"section-color": colors.grey[800],
+	"section-color": colors.grey[100],
 	navigation: colors.grey[800],
 	forms: colors.grey[700],
 	"display-headings": colors.grey[900],
@@ -62,10 +62,19 @@ const lightTheme = {
 	},
 };
 
+/// AI Generated from Phind
+/// This converts HEX to RGBA for Opacity
+function hexToRGBA(hex: string, alpha = 1) {
+	const r = Number.parseInt(hex.slice(1, 3), 16);
+	const g = Number.parseInt(hex.slice(3, 5), 16);
+	const b = Number.parseInt(hex.slice(5, 7), 16);
+	return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 const darkTheme = {
 	"bg-color": colors.grey[900],
 	"foreground-color": colors.white,
-	"section-color": colors.white,
+	"section-color": hexToRGBA(colors.grey[900], 0.96),
 	navigation: colors.white,
 	forms: "rgba(255, 255, 255, 0.7)",
 	"display-headings": colors.white,

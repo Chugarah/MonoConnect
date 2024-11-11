@@ -2,7 +2,7 @@
 @use "@scss/abstracts" as a;
 
 .apps-links {
-  @apply col-start-1 col-end-1 row-start-3 row-end-3 flex gap-md ;
+  @apply col-start-1 col-end-1 row-start-3 row-end-3 flex items-center;
 
   /// Tablets & Smaller laptops
   @apply @w-medium/header:gap-sm;

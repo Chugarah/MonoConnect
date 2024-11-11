@@ -1,9 +1,9 @@
 @use "@scss/layout" as l;
 @use "@scss/abstracts" as a;
 
-.app-features-container {
+.app-features {
   /// Adding flex and some padding
-  @apply flex items-start gap-[12.75em] pb-[7em];
+  @apply gap-[12.75em] pb-[7em] items-center;
 
   /// Tablets & Smaller laptops
   /// We are hiding some of the logos in smaller tablet mode
@@ -49,7 +49,7 @@
   }
 
   /// Card Container in App features
-  &__app-features-cards__card-container {
+  &__app-features-cards__card {
     @apply flex items-start flex-row flex-wrap gap-[1.5625em];
 
     /// Adding some responsive syntax using the tailwind plugin
@@ -66,7 +66,7 @@
   }
 
   /// Card Items in App features
-  &__app-features-cards__card-container__card-item {
+  &__app-features-cards__card__card-item {
     @apply max-w-[14.25em];
 
     /// Adding Responsive
@@ -76,7 +76,7 @@
       @w-medium/main:w-auto;
   }
 
-    &__app-features-cards__card-container__card-item h5 {
+    &__app-features-cards__card__card-item h5 {
       @apply pb-[0.75em];
     }
 

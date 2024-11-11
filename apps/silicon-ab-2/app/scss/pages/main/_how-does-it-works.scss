@@ -1,0 +1,88 @@
+@use "@scss/layout" as l;
+@use "@scss/abstracts" as a;
+
+.app-how-diw {
+  @apply pt-73 pb-35 flex-col;
+
+  /// Tablets, Smaller Laptops
+  @include l.container-query(a.$container-main, 0, a.$bp-xlarge-1) {
+    /// Img Base Size
+    &__image-items {
+      /// Adding some gap
+      @apply gap-0 !important;
+    }
+
+    h1 {
+      @apply text-[2.09375rem];
+    }
+
+    p,
+    h4 {
+      @apply max-w-[26.5em];
+    }
+
+    img {
+      @apply h-[23.625em];
+    }
+
+    p {
+      @apply pb-100 text-theme-light-special-text dark:text-theme-dark-special-text;
+    }
+  }
+
+  /// Mobile Phones
+  @include l.container-query(a.$container-main, 0, a.$bp-medium) {
+
+
+    /// Font Modifications
+    & h1 {
+      @apply text-[1.74375rem] font-ExtraBold;
+    }
+
+    & h4 {
+      @apply text-[1.35rem] py-20;
+    }
+
+    & p {
+      @apply pb-[3.75em] text-theme-light-special-text dark:text-theme-dark-special-text;
+    }
+    /// Les hide some images  YOU ARE WORKING WITH HIDING AND SHOWING IMAGES
+    & #how-phone-2,
+    #how-phone-3 {
+      @apply hidden;
+    }
+  }
+
+  // Base styles for text elements
+  p {
+    @apply text-theme-light-special-text dark:text-theme-dark-special-text pb-[79px];
+  }
+
+  // Common styles for text alignment and width
+  p,
+  h4,
+  h1 {
+    @apply text-center max-w-[39.75em] mx-auto;
+  }
+
+  // Heading styles
+  h1,
+  h4 {
+    @apply text-theme-light-display-headings dark:text-theme-dark-display-headings;
+  }
+
+  h1 {
+    @apply pb-30;
+  }
+
+  /// Img Base Size
+  &__image-items {
+    /// Adding some gap
+    @apply gap-100 pb-50 justify-center;
+
+    /// Setting image height
+    &__image {
+      @apply h-[41.4375em] w-[20.5em];
+    }
+  }
+}

@@ -61,6 +61,32 @@
   }
 }
 
+/// @name responsive-container
+/// @group Layout
+///
+/// Creates a responsive container with different padding based on container width breakpoints.
+/// Uses container queries to apply different padding at various breakpoints while maintaining
+/// a maximum width and centered alignment.
+///
+/// @param {String} $container-name - The name of the container to be used in container queries
+///
+/// @example scss
+///   .my-component {
+///     @include responsive-container('component-container');
+///   }
+///
+/// @example css
+///   .my-component {
+///     width: 100%;
+///     max-width: var(--desktop);
+///     margin: 0 auto;
+///   }
+///   @container component-container (min-width: 0) and (max-width: xlarge-2) {
+///     .my-component {
+///       padding-left: 3.5rem;
+///       padding-right: 3.5rem;
+///     }
+///   }
 @mixin responsive-container($container-name) {
   @apply w-full max-w-desktop m-auto;
 
