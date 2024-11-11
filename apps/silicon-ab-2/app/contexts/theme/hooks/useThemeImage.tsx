@@ -1,5 +1,5 @@
 import { useTheme } from "@/app/contexts/theme/hooks/useTheme";
-import type { ThemeImages } from "@/types/theme/themeTypes";
+import type { ThemeImagesFiles } from "@/types/theme/themeTypes";
 import { useMemo } from "react";
 
 /**
@@ -22,7 +22,7 @@ import { useMemo } from "react";
  * }
  * ```
  *
- * @param {ThemeImages} images - Object containing light and dark image variants
+ * @param {ThemeImageProps} images - Object containing light and dark image variants
  * @returns {string} The image URL appropriate for the current theme
  *
  * @throws {Error} Throws an error if used outside of ThemeProvider
@@ -30,7 +30,7 @@ import { useMemo } from "react";
  * @see {@link ThemeImages} For the type definition of the images parameter
  * @see {@link useTheme} For the underlying theme hook
  */
-export function useThemeImages(images: ThemeImages) {
+export function useThemeImages(images: ThemeImagesFiles) {
 	const { theme } = useTheme();
 
 	const currentImage = useMemo(() => {

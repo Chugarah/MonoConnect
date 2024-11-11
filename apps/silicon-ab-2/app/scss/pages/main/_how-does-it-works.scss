@@ -40,7 +40,7 @@
     }
 
     & h4 {
-      @apply text-[1.35rem] py-20;
+      @apply text-[1.35rem];
     }
 
     & p {
@@ -74,6 +74,12 @@
   h1 {
     @apply pb-30;
   }
+
+  h4{
+    @apply py-20;
+  }
+
+
 
   /// Img Base Size
   &__image-items {

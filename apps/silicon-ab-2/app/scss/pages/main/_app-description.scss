@@ -1,0 +1,87 @@
+.app-description {
+  /// Hiding when when in tablet, mobile
+  @apply @w-5xs:hidden @w-xlarge-1:flex max-w-[67.25rem];
+
+  /// Content Section
+  &__section {
+    /// With's and Paddings
+    @apply w-1/2 relative pt-133 pb-148;
+
+    /// Image positioning
+    /// Global Image CSS
+    &__balance-image,
+    &__user-image,
+    &__credit-card-image,
+    &__full-users-image {
+      @apply absolute;
+    }
+
+    &__balance-image {
+      @apply left-1/2 translate-x-[-55%] w-[26em] h-[24.5625em];
+    }
+
+    &__user-image {
+      @apply right-[5%] bottom-[14%] w-[16em] h-[7.3125em];
+    }
+
+    &__credit-card-image {
+      /// Our first Shadow here :);
+      @apply top-[34.8%] right-[5.5em] object-cover drop-shadow-custom-offset w-[16.354375em] h-[14.5575em];
+    }
+
+    &__full-users-image {
+      @apply w-[25.770625em] h-[28.0625em];
+    }
+
+    /// Last Text element
+    &__lastp-p-element {
+      @apply pb-43;
+    }
+
+    &__text-wrapper {
+      /// Magic Number rofl, we are trying to get the same result as Figma
+      @apply max-w-[28em];
+      & div {
+        p {
+          @apply flex items-center gap-3 pt-4;
+          .app-description__section__text-wrapper__fa-circle-check {
+            @apply text-theme-light-primary dark:text-theme-dark-primary
+              pr-10 flex-shrink-0;
+          }
+        }
+      }
+    }
+
+    &__text-wrapper h2 {
+      @apply pb-[2.8125rem] pt-2xl text-theme-light-display-headings dark:text-theme-dark-display-headings;
+    }
+
+    /// Small modification for longer text wrapper :D
+    &__text-wrapper--longer {
+      /// Magic Number rofl, we are trying to get the same result as Figma
+      @apply max-w-[32.875em] pl-sm;
+    }
+
+    &__text-wrapper--longer h2 {
+      @apply pb-[2.8125rem] pt-[1.5rem];
+    }
+
+    &__text-wrapper__flex-box {
+      @apply w-1/2;
+    }
+
+    &__text-wrapper__flex-box img {
+      @apply bg-theme-light-icon-bg-color dark:bg-theme-dark-icon-bg-color
+    rounded-lg  w-auto h-auto p-20;
+    }
+
+    &__text-wrapper__flex-box p {
+      @apply pt-md pb-46 text-sm font-Regular
+      text-theme-light-forms dark:text-theme-dark-forms pt-30 !important;
+    }
+
+    &__primary-button {
+      @apply px-[2.4em] py-[1em] ml-0;
+    }
+  }
+}

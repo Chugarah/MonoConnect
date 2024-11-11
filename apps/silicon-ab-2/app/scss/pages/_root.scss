@@ -50,7 +50,8 @@ $_grid-max-width: 46.625rem;
 
 /// Standard Dark Color
 .company-logos-wrapper,
-.app-features-wrapper {
+.app-features-wrapper,
+.app-description-wrapper {
   @apply bg-theme-light-bg-color dark:bg-theme-dark-bg-color overflow-hidden;
 }
 
@@ -68,13 +69,14 @@ $_grid-max-width: 46.625rem;
 /// Main Section
 .company-logos,
 .app-features,
-.app-how-diw {
+.app-how-diw,
+.app-description {
   @include l.responsive-container(a.$container-main);
 }
 
 
 /// Common Styles
-.app-features, .app-how-diw__image-items{
+.app-features, .app-how-diw__image-items, .app-description__section__text-wrapper--flex{
   @apply flex items-start;
 }
 

@@ -1,3 +1,4 @@
+import AppDescription from "@/app/components/main/AppDescription";
 import AppFeatures from "@/app/components/main/AppFeatures";
 import CompanyLogos from "@/app/components/main/CompanyLogos";
 import HowDoesItWorks from "@/app/components/main/HowDoesItWorks";
@@ -14,6 +15,7 @@ function MainContent({
 				<CompanyLogos />
 				<AppFeatures />
 				<HowDoesItWorks />
+				<AppDescription />
 			</main>
 			{children}
 		</>

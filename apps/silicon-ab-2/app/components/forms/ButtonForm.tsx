@@ -1,7 +1,6 @@
 /**
  * @fileoverview ButtonForm component that combines text with Font Awesome icons in a customizable button.
  * Built on top of ChadCN UI Button component with Font Awesome icon integration.
- * @module ButtonForm
  */
 
 "use client";
@@ -17,16 +16,15 @@ import type { FormButtonIconProps } from "@/types/theme/themeTypes";
  * A reusable button component that combines text with a Font Awesome icon.
  *
  * @component
- * @since 1.0.0
- *
  * @param {Object} props - The component props
  * @param {string} [props.className] - Additional CSS classes to apply to the button
  * @param {string} [props.title="Sign in / up"] - The title/tooltip text for the button
  * @param {React.ReactNode} [props.children="Sign in / up"] - The text content of the button
- * @param {IconDefinition} [props.icon=faUser] - The Font Awesome icon to display
- * @param {"left" | "right" | "hidden"} [props.iconPosition="left"] - The position of the icon relative to the text
+ * @param {import('@fortawesome/fontawesome-svg-core').IconDefinition} [props.icon=faUser] - The Font Awesome icon to display
+ * @param {'left' | 'right' | 'hidden'} [props.iconPosition="left"] - The position of the icon relative to the text
  * @param {string} [props.iconClassName] - Additional CSS classes to apply to the icon
  * @param {React.Ref<HTMLButtonElement>} ref - Forward ref for the button element
+ * @returns {JSX.Element} A styled button component with optional icon
  *
  * @example
  * // Basic usage with default icon
@@ -51,11 +49,6 @@ import type { FormButtonIconProps } from "@/types/theme/themeTypes";
  * >
  *   User Profile
  * </ButtonForm>
- *
- * @returns {JSX.Element} A styled button component with optional icon
- *
- * @see {@link https://fontawesome.com/icons Font Awesome Icons}
- * @see {@link Button} ChadCN UI Button component
  */
 const ButtonForm = React.forwardRef<HTMLButtonElement, FormButtonIconProps>(
 	(
