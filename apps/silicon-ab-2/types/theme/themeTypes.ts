@@ -130,3 +130,9 @@ export interface CompanyLogo extends BaseImage {
 export type CompanyLogos = {
 	Logos: CompanyLogo[];
 };
+
+/// AI Generated from Phind
+export interface UseRepeatedIconsProps extends Omit<IconFAProps, "title"> {
+	count: number;
+	titlePrefix?: string;
+}

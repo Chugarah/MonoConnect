@@ -56,7 +56,7 @@ $_grid-max-width: 46.625rem;
 }
 
 /// Section Color
-.app-how-diw-wrapper {
+.app-how-diw-wrapper, .clients-app-wrapper {
   @apply bg-theme-light-section-color dark:bg-theme-dark-section-color;
 }
 
@@ -70,17 +70,21 @@ $_grid-max-width: 46.625rem;
 .company-logos,
 .app-features,
 .app-how-diw,
-.app-description {
+.app-description,
+.clients-app {
   @include l.responsive-container(a.$container-main);
 }
 
 
 /// Common Styles
-.app-features, .app-how-diw__image-items, .app-description__section__text-wrapper--flex{
+.app-features, .app-how-diw__image-items,
+.app-description__section__text-wrapper--flex,
+.clients-app, .clients-app__client-test-card__user-avatar,
+.clients-app__client-test-card__stars-container{
   @apply flex items-start;
 }
 
-.apps-links, .company-logos, .app-how-diw{
+.apps-links, .company-logos, .app-how-diw, .clients-app{
 @apply gap-md;
 }
 

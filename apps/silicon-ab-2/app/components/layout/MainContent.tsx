@@ -1,5 +1,6 @@
 import AppDescription from "@/app/components/main/AppDescription";
 import AppFeatures from "@/app/components/main/AppFeatures";
+import ClientsAreLovingOurApp from "@/app/components/main/ClientsAreLovingOurApp";
 import CompanyLogos from "@/app/components/main/CompanyLogos";
 import HowDoesItWorks from "@/app/components/main/HowDoesItWorks";
 import type React from "react";
@@ -16,6 +17,7 @@ function MainContent({
 				<AppFeatures />
 				<HowDoesItWorks />
 				<AppDescription />
+				<ClientsAreLovingOurApp />
 			</main>
 			{children}
 		</>

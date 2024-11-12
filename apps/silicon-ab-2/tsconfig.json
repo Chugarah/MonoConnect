@@ -32,7 +32,8 @@
 		"**/*.tsx",
 		"**/*.js",
 		"**/*.mjs",
-		".next/types/**/*.ts"
+		".next/types/**/*.ts",
+		"app/hooks/useRepeatedIcons.jsx"
 	],
 	"exclude": ["node_modules"]
 }

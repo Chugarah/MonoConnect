@@ -1,0 +1,76 @@
+.clients-app {
+  /// Basic Settings for Client loving our app section
+  /// Instead of settings paddings top and bottom as I did above
+  /// I decided to add an height and center the content, this is because
+  /// we are not doing responsive design on this section
+
+  @apply py-100;
+
+  /// We are hiding it when smaller than desktop
+  @apply @w-5xs:hidden @w-xlarge-1:flex;
+
+  /// Clients header, setting up font, no heading from Figma
+  &__client-intro p {
+    @apply text-h-1 text-theme-light-display-headings
+      dark:text-theme-dark-display-headings font-ExtraBold
+      pr-42 max-w-416;
+  }
+
+  /// Client Testimonials card
+  &__client-test-card {
+    /// Setting max dimension for the cards
+    @apply max-w-416 max-h-[21.875em]
+    bg-theme-light-cards dark:bg-theme-dark-cards rounded-lg
+    px-md py-43 relative pb-md shadow-small;
+
+    & p {
+      @apply text-t-l text-theme-light-forms dark:text-theme-dark-forms font-Regular;
+    }
+
+    /// Quotas Icon
+    /// I made the choice to use image of icon because the free icon from
+    /// font awesome was so different.
+    &__icon {
+      /// Giving the image background and color
+      @apply bg-theme-light-primary dark:bg-theme-dark-primary rounded-lg
+      p-14 text-white shadow-primary absolute top-[-1.7em] w-auto;
+    }
+
+    /// Lets flex it and wrap it, easier to add padding and margin
+    &__stars-container {
+      @apply pt-9 pb-lg;
+
+      /// Adding some color to the starts
+      &--yellow-star {
+        @apply text-system-warning;
+      }
+      &--neutral-star {
+        @apply text-gray-500;
+      }
+    }
+
+    /// Text Padding
+    & p:first-of-type {
+      @apply pb-md;
+    }
+
+    /// User Avatar
+    &__user-avatar {
+      @apply h-48 gap-sm;
+
+      & img {
+        @apply w-auto;
+      }
+
+      /// Targeting P tag to remove padding
+      & div:first-of-type p {
+        @apply pb-0 text-t-s text-grey-600 font-Regular;
+      }
+
+      & div:first-of-type p:first-child {
+        @apply pb-[0.3em] text-t-m text-theme-light-display-headings dark:text-theme-dark-display-headings
+    font-Bold;
+      }
+    }
+  }
+}
