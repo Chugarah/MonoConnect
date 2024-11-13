@@ -13,7 +13,7 @@
   &__client-intro p {
     @apply text-h-1 text-theme-light-display-headings
       dark:text-theme-dark-display-headings font-ExtraBold
-      pr-42 max-w-416;
+      pr-42 min-w-416 ;
   }
 
   /// Client Testimonials card

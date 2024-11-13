@@ -3,6 +3,7 @@ import AppFeatures from "@/app/components/main/AppFeatures";
 import ClientsAreLovingOurApp from "@/app/components/main/ClientsAreLovingOurApp";
 import CompanyLogos from "@/app/components/main/CompanyLogos";
 import HowDoesItWorks from "@/app/components/main/HowDoesItWorks";
+import { TestimonialsProvider } from "@/app/contexts/testimonials/TestimonialsProvider";
 import type React from "react";
 
 function MainContent({
@@ -17,7 +18,10 @@ function MainContent({
 				<AppFeatures />
 				<HowDoesItWorks />
 				<AppDescription />
-				<ClientsAreLovingOurApp />
+				{/* Testimonials Data are needed for the moment in MainContent only*/}
+				<TestimonialsProvider>
+					<ClientsAreLovingOurApp />
+				</TestimonialsProvider>
 			</main>
 			{children}
 		</>

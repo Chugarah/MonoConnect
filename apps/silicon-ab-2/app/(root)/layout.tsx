@@ -16,19 +16,15 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body>
-				<div className="skeleton-wrapper">
-					<ThemeProvider>
-						{/*  Header & Navigation Inspired by Hans */}
-						<Header />
-						{/* Main Content */}
-						<MainContent>{children}</MainContent>
-						{/* Footer Content */}
-						{/* <Footer /> */}
-					</ThemeProvider>
-				</div>
-			</body>
-		</html>
+		<div className="skeleton-wrapper">
+			<ThemeProvider>
+				{/*  Header & Navigation Inspired by Hans */}
+				<Header />
+				{/* Main Content */}
+				<MainContent>{children}</MainContent>
+				{/* Footer Content */}
+				{/* <Footer /> */}
+			</ThemeProvider>
+		</div>
 	);
 }

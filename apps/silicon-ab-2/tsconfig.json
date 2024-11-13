@@ -23,6 +23,7 @@
 		"paths": {
 			"@/*": ["./*"],
 			"@types/*": ["./types/*"],
+			"@contexts/*": ["./app/contexts/*"],
 			"@scss/*": ["./app/scss/*"]
 		}
 	},

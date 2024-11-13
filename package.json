@@ -28,11 +28,12 @@
 			"eslint": "^9.13.0",
 			"data-urls": "^5.0.0",
 			"jsdom": "^25.0.1",
-			"react": "^19.0.0-rc-02c0e824-20241028",
-			"react-dom": "^19.0.0-rc-02c0e824-20241028",
+			"react": "^18.3.1",
+			"react-dom": "^18.3.1",
 			"@babel/plugin-proposal-optional-chaining-assign": "7.25.9",
 			"@babel/plugin-transform-nullish-coalescing-operator": "7.25.9",
-			"jscodeshift": "^17.1.1"
+			"jscodeshift": "^17.1.1",
+			"mkdirp": "^3.0.1"
 		}
 	},
 	"dependencies": {

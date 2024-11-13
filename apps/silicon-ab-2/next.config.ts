@@ -10,8 +10,11 @@ const nextConfig: NextConfig = {
 						{
 							loader: "sass-loader",
 							options: {
+								sourceMap: true,
 								sassOptions: {
 									includePaths: [path.join(__dirname, "./app/scss")],
+									quietDeps: false,
+									verbose: true,
 								},
 							},
 						},
@@ -24,6 +27,9 @@ const nextConfig: NextConfig = {
 	sassOptions: {
 		outputStyle:
 			process.env.NODE_ENV === "production" ? "compressed" : "expanded",
+		quietDeps: false,
+		sourceMap: true,
+		logger: console,
 	},
 	productionBrowserSourceMaps: false,
 	webpack: (config, { dev, isServer }) => {

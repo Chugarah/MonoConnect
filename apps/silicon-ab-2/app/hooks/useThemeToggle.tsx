@@ -2,9 +2,9 @@
 import { useTheme } from "@/app/contexts/theme/hooks/useTheme";
 
 /**
- * Service for handling theme toggling functionality
+ * Custom hook for handling theme toggling functionality
  *
- * @description This service provides methods and state for managing theme switching
+ * @description This hook provides methods and state for managing theme switching
  * between light and dark modes. It uses the useTheme hook to access the current theme
  * state and toggle functionality.
  *
@@ -16,7 +16,7 @@ import { useTheme } from "@/app/contexts/theme/hooks/useTheme";
  * @example
  * ```tsx
  * const ThemeToggle = () => {
- *   const { theme, themeChange, isDark } = themeToggleService();
+ *   const { theme, themeChange, isDark } = useThemeToggle();
  *
  *   return (
  *     <button onClick={themeChange}>
@@ -31,14 +31,24 @@ import { useTheme } from "@/app/contexts/theme/hooks/useTheme";
  * @property {Function} themeChange - Function to toggle between themes
  * @property {boolean} isDark - Boolean indicating if current theme is dark
  */
-function themeToggleService() {
+function useThemeToggle() {
+	/**
+	 * Destructure theme state and toggle function from useTheme hook
+	 * @type {{theme: string, toggleTheme: Function}}
+	 */
 	const { theme, toggleTheme } = useTheme();
 
 	/**
 	 * Handles the theme change operation
 	 *
-	 * @description Removes existing theme classes, determines the new theme,
-	 * adds the appropriate class to the document root, and triggers the theme toggle
+	 * @description This function:
+	 * 1. Removes both 'light' and 'dark' classes from document root
+	 * 2. Determines the new theme based on current theme
+	 * 3. Adds the new theme class to document root
+	 * 4. Calls toggleTheme to update theme context
+	 *
+	 * @function
+	 * @returns {void}
 	 */
 	const themeChange = () => {
 		document.documentElement.classList.remove("light", "dark");
@@ -47,6 +57,10 @@ function themeToggleService() {
 		toggleTheme();
 	};
 
+	/**
+	 * Return theme utilities object
+	 * @type {{theme: string, themeChange: Function, isDark: boolean}}
+	 */
 	return {
 		theme,
 		themeChange,
@@ -54,4 +68,4 @@ function themeToggleService() {
 	};
 }
 
-export default themeToggleService;
+export default useThemeToggle;

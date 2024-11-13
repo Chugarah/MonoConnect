@@ -88,7 +88,7 @@ export interface ThemeImagesFiles {
  */
 export interface ThemeImageProps {
 	lightSrc: string;
-	darkSrc?: string;
+	darkSrc: string;
 	alt: string;
 	width?: number;
 	height?: number;
