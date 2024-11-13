@@ -11,10 +11,12 @@ function NavGroup() {
 			<Switch />
 			{/* Sign in Button */}
 			<ButtonForm
-				title="Hello"
+				title="Sign up / Sign in"
 				className="button-primary"
 				iconPosition="left"
 				icon={faUser}
+				size="button-primary"
+				variant="button-primary"
 			/>
 		</div>
 	);

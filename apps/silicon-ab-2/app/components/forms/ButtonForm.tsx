@@ -1,6 +1,15 @@
 /**
+ * Got a lot of help to build this using AI Phind from the base examples in Chad CN UI Button to this component
  * @fileoverview ButtonForm component that combines text with Font Awesome icons in a customizable button.
  * Built on top of ChadCN UI Button component with Font Awesome icon integration.
+ *
+ * @module ButtonForm
+ * @requires React
+ * @requires @/components/ui/button
+ * @requires @/app/components/common/IconFA
+ * @requires @/lib/utils
+ * @requires @fortawesome/free-regular-svg-icons
+ * @requires @/types/theme/themeTypes
  */
 
 "use client";
@@ -15,15 +24,20 @@ import type { FormButtonIconProps } from "@/types/theme/themeTypes";
 /**
  * A reusable button component that combines text with a Font Awesome icon.
  *
- * @component
+ * @component ButtonForm
+ * @extends {React.ForwardRefExoticComponent<FormButtonIconProps>}
+ *
  * @param {Object} props - The component props
  * @param {string} [props.className] - Additional CSS classes to apply to the button
  * @param {string} [props.title="Sign in / up"] - The title/tooltip text for the button
  * @param {React.ReactNode} [props.children="Sign in / up"] - The text content of the button
  * @param {import('@fortawesome/fontawesome-svg-core').IconDefinition} [props.icon=faUser] - The Font Awesome icon to display
- * @param {'left' | 'right' | 'hidden'} [props.iconPosition="left"] - The position of the icon relative to the text
+ * @param {'left' | 'right' | 'hidden' | 'icon-only'} [props.iconPosition="left"] - The position of the icon relative to the text
  * @param {string} [props.iconClassName] - Additional CSS classes to apply to the icon
+ * @param {string} [props.variant] - The visual style variant of the button (e.g., "default", "destructive", "outline")
+ * @param {string} [props.size="button-primary"] - The size variant of the button
  * @param {React.Ref<HTMLButtonElement>} ref - Forward ref for the button element
+ *
  * @returns {JSX.Element} A styled button component with optional icon
  *
  * @example
@@ -41,14 +55,27 @@ import type { FormButtonIconProps } from "@/types/theme/themeTypes";
  * </ButtonForm>
  *
  * @example
- * // Button with custom styling
+ * // Icon-only button
+ * <ButtonForm
+ *   icon={faUser}
+ *   iconPosition="icon-only"
+ *   title="User Profile"
+ * />
+ *
+ * @example
+ * // Button with custom styling and variant
  * <ButtonForm
  *   className="my-custom-class"
  *   iconClassName="icon-custom-class"
  *   icon={faUser}
+ *   variant="button-primary"
  * >
  *   User Profile
  * </ButtonForm>
+ *
+ * @see {@link FormButtonIconProps} For complete type definitions
+ * @see {@link Button} For underlying button component
+ * @see {@link IconFA} For icon component implementation
  */
 const ButtonForm = React.forwardRef<HTMLButtonElement, FormButtonIconProps>(
 	(
@@ -59,17 +86,20 @@ const ButtonForm = React.forwardRef<HTMLButtonElement, FormButtonIconProps>(
 			icon = faUser,
 			iconPosition = "left",
 			iconClassName,
+			variant,
+			size = "button-primary",
 			...props
 		},
 		ref,
 	) => (
 		<Button
 			type="button"
-			variant="button-primary"
-			size="button-primary"
+			variant={variant}
+			size={iconPosition === "icon-only" ? "icon-primary" : size}
 			className={cn(
 				"button-primary",
 				iconPosition === "right" ? "flex-row-reverse" : "flex-row",
+				iconPosition === "icon-only" && "p-0",
 				className,
 			)}
 			aria-label={title}
@@ -80,11 +110,15 @@ const ButtonForm = React.forwardRef<HTMLButtonElement, FormButtonIconProps>(
 			{iconPosition !== "hidden" && (
 				<IconFA
 					icon={icon}
-					classNames={cn("button-primary__icon", iconClassName)}
+					classNames={cn(
+						"button-primary__icon",
+						iconPosition === "icon-only" && "m-0",
+						iconClassName,
+					)}
 					title={title}
 				/>
 			)}
-			<span>{children}</span>
+			{iconPosition !== "icon-only" && <span>{children}</span>}
 		</Button>
 	),
 );

@@ -1,4 +1,4 @@
-import { NextPageContext } from "next";
+import type { NextPageContext } from "next";
 import Link from "next/link";
 
 export default function CustomErrorPage({

@@ -106,7 +106,7 @@ export interface IconFAProps {
 export interface FormButtonIconProps
 	extends React.ComponentPropsWithoutRef<typeof Button> {
 	icon?: IconDefinition;
-	iconPosition?: "left" | "right" | "hidden";
+	iconPosition?: "left" | "right" | "hidden" | "icon-only";
 	iconClassName?: string;
 }
 

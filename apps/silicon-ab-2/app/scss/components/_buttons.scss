@@ -8,4 +8,12 @@
   &__icon {
     @apply w-[1.125em] h-[1.125em] flex-shrink-0;
   }
+
+  &--icon-only {
+    @apply p-0 m-0 rounded-full;
+
+    .button-primary__icon {
+      @apply m-0;
+    }
+  }
 }

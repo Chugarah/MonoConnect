@@ -42,7 +42,7 @@
 /// @param {String} $max - Max With of container size, this also could be null
 /// @example code-scss
 /// Phones
-///  @include a.container-query(header,0,map-get($map: $breakpoints, $key: 'medium')){
+///  @include a.container-query(header,0,map.get($map: $breakpoints, $key: 'medium')){
 ///    .header-navigation{
 ///      background-color: red;
 ///    }

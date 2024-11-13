@@ -51,12 +51,14 @@ $_grid-max-width: 46.625rem;
 /// Standard Dark Color
 .company-logos-wrapper,
 .app-features-wrapper,
-.app-description-wrapper {
+.app-description-wrapper,
+.faq-wrapper {
   @apply bg-theme-light-bg-color dark:bg-theme-dark-bg-color overflow-hidden;
 }
 
 /// Section Color
-.app-how-diw-wrapper, .clients-app-wrapper {
+.app-how-diw-wrapper,
+.clients-app-wrapper {
   @apply bg-theme-light-section-color dark:bg-theme-dark-section-color;
 }
 
@@ -71,23 +73,32 @@ $_grid-max-width: 46.625rem;
 .app-features,
 .app-how-diw,
 .app-description,
-.clients-app {
+.clients-app,
+.faq {
   @include l.responsive-container(a.$container-main);
 }
 
-
 /// Common Styles
-.app-features, .app-how-diw__image-items,
+.app-features,
+.app-how-diw__image-items,
 .app-description__section__text-wrapper--flex,
-.clients-app, .clients-app__client-test-card__user-avatar,
-.clients-app__client-test-card__stars-container{
+.clients-app,
+.clients-app__client-test-card__user-avatar,
+.clients-app__client-test-card__stars-container,
+.faq__faq-accordion__container,
+.faq__faq-accordion__container__title,
+.faq__faq-contact,
+.faq__faq-contact__contact-card {
   @apply flex items-start;
 }
 
-.apps-links, .company-logos, .app-how-diw, .clients-app{
-@apply gap-md;
+.apps-links,
+.company-logos,
+.app-how-diw,
+.clients-app {
+  @apply gap-md;
 }
 
-.app-how-diw{
+.app-how-diw {
   @apply max-w-desktop w-full;
 }

@@ -103,12 +103,12 @@ const darkTheme = {
 const shadows = {
 	small: `0 0.275em 0.75em -0.0625em ${colors.shadow.primary}0f, 0 0.125em 0.4em -0.0625em ${colors.shadow.primary}08`,
 	medium: `0 0.275em 1.25em -0.0625em ${colors.shadow.primary}0d, 0 0.25em 0.5625em -0.0625em ${colors.shadow.primary}08`,
-	large: `0 0.3em 1.5em -0.375em ${colors.shadow.primary}1a, 0 0.25em 0.8125em -0.125em ${colors.shadow.primary}0f`,
+	large: `0 0.275em 0.75em 0 ${colors.shadow.primary}06, 0 0.125em 0.4em 0 ${colors.shadow.primary}03`,
 	primary: `0 0.5em 1.125em -0.5em ${colors.primary.DEFAULT}1a`,
 	secondary: `0 0.5em 1.125em -0.5em ${colors.shadow.primary}26`,
-	// Add inner shadow support
 	inner: `inset 0 0.125em 0.25em -0.0625em ${colors.shadow.primary}0f`,
 	"inner-large": `inset 0 0.25em 0.5em -0.125em ${colors.shadow.primary}1a`,
+	"inner-bottom": `inset 0 -0.0625em 0 0 ${colors.grey[300]}`,
 };
 
 const spacing = {

@@ -1,0 +1,234 @@
+@use "sass:map";
+@use "sass:meta";
+@use "../../layout" as l;
+@use "../../abstracts" as a;
+
+/// Local Vars
+$_faq-grid-max-rows: 4;
+
+.faq {
+  /// Setting some PAdding
+  @apply pt-[7.625em] pb-[6.8125em];
+
+  /// Re arranging grid för desktop
+  @include l.grid-row-colum(
+    map.get($map: a.$display-type, $key: "grid"),
+    /// Colum here giddy
+    a.create-list(34.5%, auto),
+    /// Row here giddy
+    a.create-list(auto),
+    $_faq-grid-max-rows
+  );
+
+  @apply gap-y-40 gap-x-[8.375em];
+
+  /// Large Screen
+  @include l.container-query(a.$container-main, 0, a.$bp-xlarge-1) {
+    /// Lets create the grid! for Desktop
+    $_faq-grid-max-rows: 2;
+
+    /// Setting some PAdding
+    @apply pt-63 pb-lg;
+    /// Changing Grid
+    $_faq-grid-max-rows: 3;
+    @include l.grid-row-colum(
+      map.get($map: a.$display-type, $key: "grid"),
+      /// Colum here giddy
+      a.create-list(auto),
+      /// Row here giddy
+      a.create-list(auto),
+      $_faq-grid-max-rows
+    );
+  }
+
+  /// Table Screen
+  @include l.container-query(a.$container-main, 0, a.$bp-medium) {
+    @apply pt-[3.25em] pb-[2.625em];
+  }
+
+  /// Now I will try to use Mobile first Approach
+  /// Starting with container queries
+  /// Header with some text
+  &__faq-header {
+    @apply m-auto;
+    @include l.grid-position(1, 1, 1, 1);
+
+    /// Mobile devices
+    @include l.container-query(a.$container-main, 0, a.$bp-medium) {
+      @apply pt-[3.25em];
+      & p:first-of-type {
+        @apply pt-[2.125em] pb-[3.5625em];
+      }
+      & h2 {
+        @apply text-[1.54375rem];
+      }
+    }
+
+    /// Bigger Tablets larger Devices
+    @include l.container-query(a.$container-main, 0, a.$bp-xlarge-1) {
+      @include l.grid-position(1, 1, 1, 1);
+
+      @apply pt-[3.75em] text-center max-w-416;
+
+      & p:first-of-type {
+        @apply py-[3rem];
+      }
+    }
+
+    & h2 {
+      @apply pb-[2.875rem] text-theme-light-display-headings
+ dark:text-theme-dark-display-headings;
+    }
+    & p {
+      @apply text-theme-light-forms dark:text-theme-dark-forms;
+    }
+  }
+
+  /// Accordion FAQ
+  &__faq-accordion {
+    ///----------- Responsive START -----------
+    /// Mobile Devices
+    /// We are setting container padding parent container
+    /// for FAQ
+    @include l.grid-position(2, 2, 1, 4);
+
+    /// Table Screen
+    @include l.container-query(a.$container-main, 0, a.$bp-medium) {
+      @apply px-[0.8125em];
+    }
+
+    /// Large Screens
+    @include l.container-query(a.$container-main, 0, a.$bp-xlarge-1) {
+      /// Adding some padding to left and right side in mobile version
+      @include l.grid-position(1, 1, 2, 2);
+    }
+
+    /// Tablet to large screen
+    @include l.container-query(
+      a.$container-main,
+      a.$bp-medium,
+      a.$bp-xlarge-1
+    ) {
+      @apply p-sm;
+    }
+  }
+
+  &__faq-accordion__container {
+    ///----------- Starting CSS -----------
+    @apply flex-col;
+
+    /// When Container is open we want an dark border in
+    /// dark mode This need to be above!!
+    &--active {
+      @apply border border-solid
+       border-theme-light-cards-border-active
+       dark:border-theme-dark-cards-border-active;
+    }
+
+    /// Mobile Devices to Tablet Devices
+    @include l.container-query(a.$container-main, 0, a.$bp-medium) {
+      /// Borders
+      @apply border-t-[0.125em] border-l-[0.125em] border-r-[0.125em] border-grey-300;
+
+      /// Setting Padding for the content and title
+      &__title,
+      &__content {
+        @apply p-md;
+      }
+
+      /// This is only applied on first element
+      &--border-radius {
+        @apply rounded-t-lg;
+      }
+
+      &__title {
+        @apply shadow-inner-bottom;
+
+        & p {
+          @apply text-theme-light-display-headings dark:text-theme-dark-display-headings;
+        }
+
+        &--border-bottom {
+          @apply border-b-[0.125em] border-solid border-grey-300;
+        }
+
+        /// Adding Space between Paragrafs in mobile view
+        &__content {
+          p {
+            @apply text-theme-light-forms dark:text-theme-dark-forms;
+          }
+        }
+      }
+    }
+
+    /// From Tablet to unlimited screen size
+    /// This one starts from medium without any max container with
+    /// Basically we could just put all code here if we don't need some
+    /// global css
+    @include l.container-query(a.$container-main, a.$bp-medium) {
+      @apply gap-md py-sm rounded-lg bg-theme-light-cards dark:bg-theme-dark-cards
+      shadow-medium mb-sm;
+
+      /// Setting Padding for the content and title
+      &__title,
+      &__content {
+        @apply px-md;
+      }
+
+      /// Setting up fonts and color
+      &__content p {
+        @apply text-theme-light-forms dark:text-theme-dark-forms pb-xs;
+      }
+
+      &__title p {
+        @apply text-theme-light-display-headings dark:text-theme-dark-display-headings;
+      }
+    }
+
+    &__title {
+      /// Flex Settings
+      @apply w-full justify-between text-center items-center;
+
+      p {
+        /// Font Settings Global
+        @apply text-t-m font-SemiBold
+        text-theme-light-forms dark:text-theme-dark-forms;
+
+        & p:last-of-type {
+          /// Adding Padding to the container for faq
+          @apply px-150;
+        }
+      }
+
+      /// Adding some styles colors when our accordion is active
+      &__icon--active {
+        @apply text-white;
+      }
+
+      &__button {
+        @apply bg-theme-light-icon-bg-color dark:bg-theme-dark-icon-bg-color;
+
+        &--active {
+          @apply bg-theme-light-primary dark:bg-theme-dark-primary;
+        }
+      }
+    }
+
+    &__title p:first-of-type,
+    &__content {
+      /// Adding Padding to the container for faq
+      @apply text-start;
+    }
+
+    &__content {
+      /// Setting Content too 100%
+      @apply w-full;
+
+      /// Adding Space between Paragrafs in mobile view
+      & p {
+        /// Font Settings
+        @apply text-t-s;
+      }
+    }
+  }
+}
