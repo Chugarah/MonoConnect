@@ -109,6 +109,8 @@ const shadows = {
 	inner: `inset 0 0.125em 0.25em -0.0625em ${colors.shadow.primary}0f`,
 	"inner-large": `inset 0 0.25em 0.5em -0.125em ${colors.shadow.primary}1a`,
 	"inner-bottom": `inset 0 -0.0625em 0 0 ${colors.grey[300]}`,
+	"primary-glow": "0 -0.5em 1.125em -0.5em rgba(99, 102, 241, 0.9)",
+	"inner-border-bottom": "inset 0 -0.0625em 0 0 #363443",
 };
 
 const spacing = {
@@ -197,10 +199,9 @@ const config: Config = {
 	darkMode: ["class"],
 	lightMode: ["class"],
 	content: [
-		"./app/**/*.{js,ts,jsx,tsx,scss}",
-		"./components/**/*.{js,ts,jsx,tsx,scss}",
-		"./app/**/*.{ts,tsx}",
-		"./@/**/*.{ts,tsx}",
+		"./app/**/*.{js,ts,jsx,tsx,mdx}",
+		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
+		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
 		extend: {

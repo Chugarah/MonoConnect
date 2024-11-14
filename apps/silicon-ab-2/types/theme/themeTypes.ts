@@ -1,4 +1,5 @@
 import type { Button } from "@/components/ui/button";
+import type { Faq } from "@/types/api/faqTypes";
 import type { IconDefinition } from "@fortawesome/free-regular-svg-icons";
 
 /**
@@ -135,4 +136,8 @@ export type CompanyLogos = {
 export interface UseRepeatedIconsProps extends Omit<IconFAProps, "title"> {
 	count: number;
 	titlePrefix?: string;
+}
+
+export interface AccordionProps extends Faq {
+	isOpen: boolean;
 }

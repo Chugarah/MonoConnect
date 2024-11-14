@@ -91,16 +91,31 @@ $_faq-grid-max-rows: 4;
     /// We are setting container padding parent container
     /// for FAQ
     @include l.grid-position(2, 2, 1, 4);
+    @apply p-xs flex flex-col gap-md;
 
     /// Table Screen
     @include l.container-query(a.$container-main, 0, a.$bp-medium) {
-      @apply px-[0.8125em];
+      @apply px-[0.8125em] gap-0;
+    }
+
+    /// Tablet to Infinite
+    @include l.container-query(a.$container-main, a.$bp-medium) {
+      /// We are setting rounded corners of all main containers below faq-accordion
+      > div[class*="__container"] {
+        @apply rounded-lg;
+      }
     }
 
     /// Large Screens
-    @include l.container-query(a.$container-main, 0, a.$bp-xlarge-1) {
+    @include l.container-query(
+      a.$container-main,
+      a.$bp-xlarge-1,
+      a.$bp-xlarge-1
+    ) {
       /// Adding some padding to left and right side in mobile version
       @include l.grid-position(1, 1, 2, 2);
+      /// Getting Gap in Desktop version between Accordion items
+      @apply p-xs gap-md;
     }
 
     /// Tablet to large screen
@@ -109,125 +124,107 @@ $_faq-grid-max-rows: 4;
       a.$bp-medium,
       a.$bp-xlarge-1
     ) {
-      @apply p-sm;
-    }
-  }
-
-  &__faq-accordion__container {
-    ///----------- Starting CSS -----------
-    @apply flex-col;
-
-    /// When Container is open we want an dark border in
-    /// dark mode This need to be above!!
-    &--active {
-      @apply border border-solid
-       border-theme-light-cards-border-active
-       dark:border-theme-dark-cards-border-active;
+      @apply p-xs;
     }
 
-    /// Mobile Devices to Tablet Devices
-    @include l.container-query(a.$container-main, 0, a.$bp-medium) {
-      /// Borders
-      @apply border-t-[0.125em] border-l-[0.125em] border-r-[0.125em] border-grey-300;
+    &__container {
+      ///----------- Starting CSS -----------
+      @apply flex-col;
 
-      /// Setting Padding for the content and title
-      &__title,
+      ///----------- Responsive START -----------
+      /// Mobile Devices to Tablet Devices
+      @include l.container-query(a.$container-main, 0, a.$bp-medium) {
+        @apply border border-solid border-theme-light-cards-border dark:border-theme-dark-cards-border;
+
+        /// Adding Rounded corner only on the first one item
+        &--border-radius-top {
+          @apply rounded-tl-lg rounded-tr-lg;
+        }
+        &--border-radius-bottom {
+          @apply rounded-bl-lg rounded-br-lg;
+        }
+
+        /// Title Styling
+        &__title {
+          @apply p-md shadow-inner-border-bottom bg-theme-dark-cards dark:bg-theme-dark-cards;
+        }
+        &__content p {
+          @apply p-md;
+        }
+      }
+
+      /// From Tablet to unlimited screen size
+      /// This one starts from medium without any max container with
+      /// Basically we could just put all code here if we don't need some
+      /// global css
+      @include l.container-query(a.$container-main, a.$bp-medium) {
+        @apply bg-theme-light-cards dark:bg-theme-dark-cards;
+
+        /// Adding Shadow
+        @include a.box-shadow(
+          false,
+          (0 0.275em 0.75em 0em #131022 0.06),
+          (0 0.125em 0.4em 0em #131022 0.03)
+        );
+
+        &--active {
+          @apply border border-solid border-theme-light-cards-border-active dark:border-theme-dark-cards-border-active
+          rounded-lg;
+        }
+
+        &__content p {
+          @apply px-md pb-md;
+        }
+
+        &__title {
+          /// Flex Settings
+          @apply gap-md py-sm rounded-lg bg-none px-md bg-theme-light-cards
+        dark:bg-theme-dark-cards;
+        }
+      }
+      ///----------- Responsive END -----------
+
       &__content {
-        @apply p-md;
+        @apply w-full;
+      }
+      /// When Container is open we want an dark border in
+      /// dark mode This need to be above!!
+      &--active {
+        @apply border border-solid border-theme-light-cards-border-active dark:border-theme-dark-cards-border-active;
       }
 
-      /// This is only applied on first element
-      &--border-radius {
-        @apply rounded-t-lg;
-      }
-
+      /// Global CSS for all Devices
       &__title {
-        @apply shadow-inner-bottom;
-
-        & p {
-          @apply text-theme-light-display-headings dark:text-theme-dark-display-headings;
+        /// Flex Settings
+        @apply w-full justify-between  items-center rounded-none;
+        p {
+          @apply pr-6;
+        }
+        p:first-of-type {
+          @apply font-SemiBold text-theme-light-display-headings dark:text-theme-dark-display-headings;
         }
 
-        &--border-bottom {
-          @apply border-b-[0.125em] border-solid border-grey-300;
+        /// Adding some styles colors when our accordion is active
+        &__icon--active {
+          @apply text-white;
         }
 
-        /// Adding Space between Paragrafs in mobile view
-        &__content {
-          p {
-            @apply text-theme-light-forms dark:text-theme-dark-forms;
+        &__button {
+          /// Need to add padding and dimension, button size got
+          /// crewed in Mobile Iphone browser
+          @apply p-[1.25em] w-[2.5em] h-[2.5em]
+          bg-theme-light-icon-bg-color dark:bg-theme-dark-icon-bg-color;
+          /// Applying Shadow :)
+          @apply shadow-primary-glow;
+
+          &--active {
+            @apply bg-theme-light-primary dark:bg-theme-dark-primary;
           }
         }
       }
-    }
-
-    /// From Tablet to unlimited screen size
-    /// This one starts from medium without any max container with
-    /// Basically we could just put all code here if we don't need some
-    /// global css
-    @include l.container-query(a.$container-main, a.$bp-medium) {
-      @apply gap-md py-sm rounded-lg bg-theme-light-cards dark:bg-theme-dark-cards
-      shadow-medium mb-sm;
-
-      /// Setting Padding for the content and title
-      &__title,
-      &__content {
-        @apply px-md;
-      }
-
-      /// Setting up fonts and color
       &__content p {
-        @apply text-theme-light-forms dark:text-theme-dark-forms pb-xs;
-      }
-
-      &__title p {
-        @apply text-theme-light-display-headings dark:text-theme-dark-display-headings;
-      }
-    }
-
-    &__title {
-      /// Flex Settings
-      @apply w-full justify-between text-center items-center;
-
-      p {
-        /// Font Settings Global
-        @apply text-t-m font-SemiBold
-        text-theme-light-forms dark:text-theme-dark-forms;
-
-        & p:last-of-type {
-          /// Adding Padding to the container for faq
-          @apply px-150;
-        }
-      }
-
-      /// Adding some styles colors when our accordion is active
-      &__icon--active {
-        @apply text-white;
-      }
-
-      &__button {
-        @apply bg-theme-light-icon-bg-color dark:bg-theme-dark-icon-bg-color;
-
-        &--active {
-          @apply bg-theme-light-primary dark:bg-theme-dark-primary;
-        }
-      }
-    }
-
-    &__title p:first-of-type,
-    &__content {
-      /// Adding Padding to the container for faq
-      @apply text-start;
-    }
-
-    &__content {
-      /// Setting Content too 100%
-      @apply w-full;
-
-      /// Adding Space between Paragrafs in mobile view
-      & p {
-        /// Font Settings
-        @apply text-t-s;
+        @apply text-theme-light-forms dark:text-theme-dark-forms
+        font-Regular text-t-s;
       }
     }
   }

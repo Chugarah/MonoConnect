@@ -36,7 +36,7 @@ export function TestimonialsProvider({
 	 * State for tracking the loading status of testimonial data
 	 * @type {[boolean, React.Dispatch<React.SetStateAction<boolean>>]}
 	 */
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 
 	/**
 	 * State for storing any errors that occur during data fetching
@@ -120,7 +120,11 @@ export function TestimonialsProvider({
 			try {
 				await fetchTestimonials();
 			} catch (error) {
-				console.error("Failed to initialize testimonials:", error);
+				setError(
+					error instanceof Error
+						? error
+						: new Error("Failed to activate fetchFaqData"),
+				);
 			}
 		};
 

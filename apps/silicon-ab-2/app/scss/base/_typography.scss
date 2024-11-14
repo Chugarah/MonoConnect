@@ -1,59 +1,9 @@
 @use "sass:map";
 @use "../abstracts/_variables" as a;
 @use "../abstracts/_colors" as c;
-/// =============================================================================
-/// Font Awesome
-/// =============================================================================
 
-@font-face {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  src:
-    url(map.get($map: a.$font-awesome-src, $key: "fa-solid-900-woff2"))
-      format("woff2"),
-    url(map.get($map: a.$font-awesome-src, $key: "fa-solid-900-ttf"))
-      format("truetype");
-}
 
-@font-face {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 400;
-  src:
-    url(map.get($map: a.$font-awesome-src, $key: "fa-regular-400-woff2"))
-      format("woff2"),
-    url(map.get($map: a.$font-awesome-src, $key: "fa-regular-400-ttf"))
-      format("truetype");
-}
 
-@font-face {
-  font-family: "Font Awesome 6 Brands";
-  font-weight: 400;
-  src:
-    url(map.get($map: a.$font-awesome-src, $key: "fa-brands-400-woff2"))
-      format("woff2"),
-    url(map.get($map: a.$font-awesome-src, $key: "fa-brands-400-ttf"))
-      format("truetype");
-}
-
-/// Some selectors that will enable correct font depending on icon type
-.fa-solid-base {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-}
-
-.fa-regular-base {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 400;
-}
-
-.fa-brand-base {
-  font-family: "Font Awesome 6 Brands";
-  font-weight: 400;
-}
-
-/// =============================================================================
-/// Default Font
-/// =============================================================================
 $core-font-size: 16px;
 
 /// Font Settings Mixin :)

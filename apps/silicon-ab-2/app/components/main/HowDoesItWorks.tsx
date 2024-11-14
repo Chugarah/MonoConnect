@@ -1,4 +1,24 @@
 import Image from "next/image";
+
+/**
+ * HowDoesItWorks Component
+ *
+ * @component
+ * @description Renders a section explaining how the application works through visual and textual content.
+ * The component displays three phone images in a specific layout along with descriptive text.
+ * It follows BEM naming conventions for CSS classes and includes proper ARIA labels for accessibility.
+ *
+ * The component uses Next.js Image component for optimized image loading, with three phone images
+ * arranged to demonstrate the app's functionality. Each image is given a unique ID and consistent
+ * styling through BEM classes.
+ *
+ * @example
+ * ```jsx
+ * <HowDoesItWorks />
+ * ```
+ *
+ * @returns {JSX.Element} A section containing images and text explaining the app's functionality
+ */
 function HowDoesItWorks() {
 	return (
 		<>
