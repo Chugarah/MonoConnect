@@ -40,29 +40,20 @@ import { cn } from "@/lib/utils";
  * Uses Tailwind CSS classes for styling with support for different variants and sizes.
  */
 const buttonVariants = cva(
-	"inline-flex items-center justify-center gap-4 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+	`
+  inline-flex items-center justify-center gap-4 whitespace-nowrap rounded-md
+  text-sm font-medium ring-offset-background transition-colors
+  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring
+  focus-visible:ring-offset-2
+  disabled:pointer-events-none
+  disabled:opacity-50
+  touch-manipulation
+  [&_svg]:pointer-events-none
+  [&_svg]:shrink-0`,
 	{
 		variants: {
 			variant: {
-				default: "bg-primary text-primary-foreground hover:bg-primary/90",
-				destructive:
-					"bg-destructive text-destructive-foreground hover:bg-destructive/90",
-				outline: `
-          text-theme-light-icon-color dark:text-theme-dark-icon-color
-          transition-all duration-500 ease-out
-					bg-theme-light-primary
-
-					rounded-full
-					will-change-[color,background-color]
-					hover:bg-theme-light-primary/90
-          hover:text-white
-          `,
-				secondary:
-					"bg-secondary text-secondary-foreground hover:bg-secondary/80",
-				ghost: "hover:bg-accent hover:text-accent-foreground",
-
-				// Generated using Phind AI to help me getting hover effect on Font-Awesome icon inside the chad CN Button
-				link: `
+				"link-icon-hover": `
 					text-primary underline-offset-4 hover:underline p-0 m-0
 					[&_.icon-fa]:text-theme-light-icon-color dark:[&_.icon-fa]:text-theme-dark-icon-color
 					[&_.icon-fa]:bg-theme-light-icon-bg-color dark:[&_.icon-fa]:bg-theme-dark-icon-bg-color
@@ -71,6 +62,56 @@ const buttonVariants = cva(
 					[&_.icon-fa]:hover:bg-theme-light-primary
           [&_.icon-fa]:dark:hover:bg-slate-500
 					[&_.icon-fa]:active:text-theme-light-primary [&_.icon-fa]:active:brightness-90
+
+					@media (hover: none) {
+						&:active {
+              text-theme-light-forms dark:text-theme-dark-forms
+						}
+					}
+				`,
+				"link-icon": `
+					text-primary underline-offset-4 hover:underline p-0 m-0
+					@media (hover: none) {
+						&:active {
+              text-theme-light-forms dark:text-theme-dark-forms
+						}
+					}
+				`,
+				default: `
+					bg-primary text-primary-foreground
+					hover:bg-primary/90
+					active:bg-primary/80
+					@media (hover: none) {
+						&:active {
+							background-color: rgb(var(--primary) / 0.8);
+						}
+					}
+				`,
+				destructive: `
+					bg-destructive text-destructive-foreground
+					hover:bg-destructive/90
+					active:bg-destructive/80
+					@media (hover: none) {
+						&:active {
+							background-color: rgb(var(--destructive) / 0.8);
+						}
+					}
+				`,
+				outline: `
+					text-theme-light-icon-color dark:text-theme-dark-icon-color
+					transition-all duration-500 ease-out
+					bg-theme-light-primary
+					rounded-full
+					will-change-[color,background-color]
+					hover:bg-theme-light-primary/90
+					hover:text-white
+					active:bg-theme-light-primary/80
+					@media (hover: none) {
+						&:active {
+							background-color: rgb(var(--theme-light-primary) / 0.8);
+							color: white;
+						}
+					}
 				`,
 				"button-primary": `
 					transition-all duration-500 ease-out
@@ -79,12 +120,19 @@ const buttonVariants = cva(
 					rounded-lg
 					will-change-[color,background-color]
 					hover:bg-theme-light-primary/90
+					active:bg-theme-light-primary/80
+					@media (hover: none) {
+						&:active {
+							background-color: rgb(var(--theme-light-primary) / 0.8);
+						}
+					}
 				`,
 			},
 			size: {
 				default: "h-10 px-4 py-2",
 				sm: "h-9 rounded-md px-3",
-				lg: "h-11 rounded-md px-8",
+				lg: "h-11 rounded-lg px-8",
+				xl: "px-md py-sm rounded-lg",
 				icon: "h-[36px] w-[36px] p-0",
 				"icon-primary": "h-[36px] w-[36px] p-0",
 				"button-primary": "px-[1.125rem] py-[0.5625rem]",

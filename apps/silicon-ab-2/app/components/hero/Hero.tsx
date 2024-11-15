@@ -19,7 +19,7 @@ function Hero() {
 					<AppLinks />
 					<div className="hero-section__discover-more">
 						<ButtonForm
-							variant="link"
+							variant="link-icon-hover"
 							icon={faChevronDown}
 							iconClassName="hero-section__discover-more__icon"
 							className="hero-section__discover-more__button"

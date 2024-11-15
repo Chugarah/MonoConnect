@@ -35,7 +35,7 @@ $_grid-max-width: 46.625rem;
       @apply transition-all duration-500;
 
       /// Show on medium and larger screens
-      @apply @w-medium/header:flex w-[6.2em] @w-5xs/header:hidden;
+      @apply @w-medium/header:flex w-[7.2em] @w-5xs/header:hidden;
     }
 
     .button-primary {

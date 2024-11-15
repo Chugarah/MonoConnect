@@ -1,4 +1,5 @@
 import FaqAccordion from "@/app/components/common/Faq/FaqAccordion";
+import FaqSocials from "@/app/components/main/FAQ/FaqSocials";
 
 /**
  * FAQ Component
@@ -28,9 +29,10 @@ function Faq() {
 						<h2>Any questions? Check out the FAQs</h2>
 						<p>Still have unanswered questions and need to get in touch?</p>
 					</div>
+					{/* Accordion :)*/}
+					<FaqAccordion />
+					<FaqSocials />
 				</div>
-
-				<FaqAccordion />
 			</section>
 		</>
 	);

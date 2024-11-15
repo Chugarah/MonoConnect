@@ -2,7 +2,7 @@ import AppDescription from "@/app/components/main/AppDescription";
 import AppFeatures from "@/app/components/main/AppFeatures";
 import ClientsAreLovingOurApp from "@/app/components/main/ClientsAreLovingOurApp";
 import CompanyLogos from "@/app/components/main/CompanyLogos";
-import Faq from "@/app/components/main/Faq";
+import Faq from "@/app/components/main/FAQ/Faq";
 import HowDoesItWorks from "@/app/components/main/HowDoesItWorks";
 import { FaqProvider } from "@/app/contexts/faqAccordion/FaqProvider";
 import { TestimonialsProvider } from "@/app/contexts/testimonials/TestimonialsProvider";
@@ -44,7 +44,6 @@ function MainContent({
 				<AppFeatures />
 				<HowDoesItWorks />
 				<AppDescription />
-				{/* Testimonials Data are needed for the moment in MainContent only*/}
 				<TestimonialsProvider>
 					<ClientsAreLovingOurApp />
 				</TestimonialsProvider>
