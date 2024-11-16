@@ -62,24 +62,29 @@ export function FaqProvider({ children }: { children: React.ReactNode }) {
 				{
 					simulateLoading: true,
 					loadingTime: 5000,
+					expectsData: true,
 				},
 			);
 
 			if (response.error) {
 				setError(response.error);
-				setMessage(response.message || "Failed to load Testimonial data");
-			} else {
-				setFaq(response.data || []);
+				setMessage(response.message || "Failed to load FAQ data");
+				setFaq([]);
+			} else if (Array.isArray(response.data)) {
+				setFaq(response.data);
+				setError(null);
 				setMessage(response.message || "Data Loaded :)");
+			} else {
+				throw new Error("Invalid FAQ data format");
 			}
 		} catch (error) {
 			setError(
 				error instanceof Error ? error : new Error("Failed to fetch FAQ Data"),
 			);
 			setMessage("Failed to Load FAQ Data");
+			setFaq([]);
 		} finally {
 			setIsLoading(false);
-			setMessage("FAQ Loaded Complexly");
 		}
 	}, []);
 

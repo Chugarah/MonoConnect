@@ -1,17 +1,8 @@
 @use "sass:map";
 @use "../abstracts/_variables" as a;
-@use "../abstracts/_colors" as c;
-
-
 
 $core-font-size: 16px;
 
-/// Font Settings Mixin :)
-@mixin font-settings($fs-size: null, $fs-color: null, $fs-weight: null) {
-  font-size: $fs-size;
-  color: $fs-color;
-  font-weight: $fs-weight;
-}
 
 /// Default H1 Font Settings
 h1 {

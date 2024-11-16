@@ -4,6 +4,7 @@ import ClientsAreLovingOurApp from "@/app/components/main/ClientsAreLovingOurApp
 import CompanyLogos from "@/app/components/main/CompanyLogos";
 import Faq from "@/app/components/main/FAQ/Faq";
 import HowDoesItWorks from "@/app/components/main/HowDoesItWorks";
+import Subscribe from "@/app/components/main/Subscribe";
 import { FaqProvider } from "@/app/contexts/faqAccordion/FaqProvider";
 import { TestimonialsProvider } from "@/app/contexts/testimonials/TestimonialsProvider";
 import type React from "react";
@@ -50,6 +51,7 @@ function MainContent({
 				<FaqProvider>
 					<Faq />
 				</FaqProvider>
+				<Subscribe />
 			</main>
 			{children}
 		</>

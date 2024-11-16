@@ -96,10 +96,10 @@
   }
   /// Tablet Mode
   @include container-query($container-name, 0, a.$bp-xlarge-1) {
-    @apply px-40;
+    @apply px-3;
   }
   /// Mobile Mode
   @include container-query($container-name, 0, a.$bp-mobile) {
-    @apply px-14;
+    @apply px-[0.5rem];
   }
 }

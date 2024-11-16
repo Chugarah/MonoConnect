@@ -28,25 +28,25 @@ export function TestimonialsProvider({
 }) {
 	/**
 	 * State for storing the array of testimonials
-	 * @type {[Testimonial[], React.Dispatch<React.SetStateAction<Testimonial[]>>]}
+	 * @type {Array<Testimonial>}
 	 */
 	const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
 	/**
 	 * State for tracking the loading status of testimonial data
-	 * @type {[boolean, React.Dispatch<React.SetStateAction<boolean>>]}
+	 * @type {boolean}
 	 */
 	const [isLoading, setIsLoading] = useState(false);
 
 	/**
 	 * State for storing any errors that occur during data fetching
-	 * @type {[Error | null, React.Dispatch<React.SetStateAction<Error | null>>]}
+	 * @type {Error | null}
 	 */
 	const [error, setError] = useState<Error | null>(null);
 
 	/**
 	 * State for storing success/error messages
-	 * @type {[string | null, React.Dispatch<React.SetStateAction<string | null>>]}
+	 * @type {string | null}
 	 */
 	const [message, setMessage] = useState<string | null>(null);
 
@@ -62,8 +62,8 @@ export function TestimonialsProvider({
 	 * - Message updates
 	 *
 	 * @async
-	 * @function
-	 * @returns {Promise<void>}
+	 * @function fetchTestimonials
+	 * @returns {Promise<void>} A promise that resolves when the data fetching is complete
 	 *
 	 * @throws {Error} When the API request fails
 	 *
@@ -80,15 +80,20 @@ export function TestimonialsProvider({
 				{
 					simulateLoading: true,
 					loadingTime: 5000,
+					expectsData: true,
 				},
 			);
 
 			if (response.error) {
 				setError(response.error);
 				setMessage(response.message || "Failed to load Testimonial data");
-			} else {
-				setTestimonials(response.data || []);
+				setTestimonials([]);
+			} else if (Array.isArray(response.data)) {
+				setTestimonials(response.data);
+				setError(null);
 				setMessage(response.message || "Data Loaded :)");
+			} else {
+				throw new Error("Invalid testimonial data format");
 			}
 		} catch (error) {
 			setError(
@@ -97,6 +102,7 @@ export function TestimonialsProvider({
 					: new Error("Failed to fetch testimonials"),
 			);
 			setMessage("Failed to load testimonials");
+			setTestimonials([]);
 		} finally {
 			setIsLoading(false);
 		}
@@ -110,12 +116,14 @@ export function TestimonialsProvider({
 	 * @listens fetchTestimonials
 	 */
 	useEffect(() => {
-		/*
-    113:3  Error: Promises must be awaited, end with a call to .catch, end with a call to
-    .then with a rejection handler or be explicitly marked as ignored with the `void` operator.
-    @typescript-eslint/no-floating-promises
-    */
-		// Create an async function inside useEffect
+		/**
+		 * Initializes the testimonials by fetching data from the API.
+		 * This function is called when the component mounts.
+		 *
+		 * @async
+		 * @function initializeTestimonials
+		 * @returns {Promise<void>} A promise that resolves when the initialization is complete
+		 */
 		const initializeTestimonials = async () => {
 			try {
 				await fetchTestimonials();

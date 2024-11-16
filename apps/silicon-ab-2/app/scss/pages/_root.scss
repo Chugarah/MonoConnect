@@ -52,13 +52,15 @@ $_grid-max-width: 46.625rem;
 .company-logos-wrapper,
 .app-features-wrapper,
 .app-description-wrapper,
-.faq-wrapper {
+.faq-wrapper,
+.subscribe {
   @apply bg-theme-light-bg-color dark:bg-theme-dark-bg-color overflow-hidden;
 }
 
 /// Section Color
 .app-how-diw-wrapper,
-.clients-app-wrapper {
+.clients-app-wrapper,
+ {
   @apply bg-theme-light-section-color dark:bg-theme-dark-section-color;
 }
 
@@ -74,7 +76,8 @@ $_grid-max-width: 46.625rem;
 .app-how-diw,
 .app-description,
 .clients-app,
-.faq {
+.faq,
+.subscribe__container {
   @include l.responsive-container(a.$container-main);
 }
 
@@ -88,7 +91,9 @@ $_grid-max-width: 46.625rem;
 .faq__faq-accordion__container,
 .faq__faq-accordion__container__title,
 .faq__faq-contact,
-.faq__faq-contact__contact-card {
+.faq__faq-contact__contact-card,
+.subscribe__container__wrapper,
+.subscribe__container__wrapper__flex {
   @apply flex items-start;
 }
 

@@ -1,0 +1,159 @@
+@use "../../layout" as l;
+@use "../../abstracts" as a;
+
+.subscribe {
+  &__container {
+    // Center the container and remove padding
+    @apply m-auto p-0;
+
+
+    // Apply padding for Mobile devices devices
+    @apply @w-5xs:px-[0.3em];
+
+
+    // Apply padding for medium devices
+    @include l.container-query(a.$container-main, a.$bp-medium) {
+      @apply px-sm;
+    }
+    // Remove padding for extra-large devices
+    @include l.container-query(a.$container-main, a.$bp-xlarge-1) {
+      @apply p-0;
+    }
+  }
+
+  &__wrapper {
+    // Set background color and apply flexbox properties
+    @apply bg-theme-light-subscription-section dark:bg-theme-dark-subscription-section;
+    @apply flex items-center justify-between rounded-lg;
+
+    // Adjust layout for small to medium devices
+    @include l.container-query(a.$container-main, 0, a.$bp-medium) {
+      @apply flex-col gap-4 pb-[2.25em] px-xs;
+    }
+
+    // Adjust padding and alignment for Mobile devices
+    @include l.container-query(a.$container-main, a.$bp-mobile) {
+      @apply py-[4.5em] px-[1.5625em] justify-start;
+    }
+
+    // Adjust padding and alignment for medium devices
+    @include l.container-query(a.$container-main, a.$bp-medium) {
+      @apply py-[4.5em] px-[1.5625em] justify-start;
+    }
+
+    // Adjust padding for extra-large devices
+    @include l.container-query(a.$container-main, a.$bp-xlarge-1) {
+      @apply py-[4.5em] px-[7em];
+    }
+  }
+
+  &__media {
+    // Align items and set gap
+    @apply flex items-center gap-4;
+
+    // Adjust flex property for extra-large devices
+    @include l.container-query(a.$container-main, a.$bp-xlarge-1) {
+      @apply flex-[1.4];
+    }
+
+    // Padding for mobile devices
+    @apply @w-xs:pb-xl pt-sm
+    // Padding for tablet devices
+    @w-medium:p-0;
+
+    &-icon {
+      // Set width and height to auto
+      @apply w-auto h-auto;
+      // Add padding-right for extra-large devices
+      @include l.container-query(a.$container-main, a.$bp-xlarge-1) {
+        @apply pr-lg;
+      }
+    }
+
+    &-text {
+      // Arrange text in a column
+      @apply flex flex-col;
+    }
+  }
+
+  &__title {
+    // Set text color and padding
+    @apply text-theme-light-display-headings dark:text-theme-dark-display-headings pl-20;
+    &--mobile {
+      // Display block on small screens, hide on extra-large
+      @apply @w-xs:block w-[13em] mr-md
+      @w-xlarge-1:hidden;
+    }
+    &--desktop {
+      // Hide on small screens, display block on extra-large
+      @apply @w-xs:hidden @w-xlarge-1:block;
+    }
+  }
+}
+
+.newsletter {
+  // Set flex properties and gap
+  @apply flex;
+
+  // Adjust flex property and padding for extra-large devices
+  @include l.container-query(a.$container-main, a.$bp-xlarge-1) {
+    @apply flex-[1.1] pl-[4.625em];
+  }
+
+  // Full width for tablet mode
+  @include l.container-query(a.$container-main, 0, a.$bp-xlarge-1) {
+    @apply w-full;
+  }
+
+  &__field {
+    // Set relative position and flex-grow
+    @apply relative flex-1;
+
+    &-icon {
+      // Position icon absolutely and style it
+      @apply absolute text-grey-500 pointer-events-none w-20 h-40
+      left-[5%] top-1/2 -translate-y-1/2 border-none;
+    }
+
+    &-input {
+      // Style input field
+      @apply w-full flex-grow text-inherit font-Regular
+    text-grey-500 bg-white dark:bg-theme-dark-cards
+    border-grey-300 dark:border-theme-dark-cards-border
+    rounded-tr-none rounded-br-none py-[1.786em] m-0 p-0;
+
+      // Use clamp for responsive padding-left
+      padding-left: clamp(15%, calc(8% + 2em), 20%);
+
+      // Adjust padding-left for extra-large devices
+      @include l.container-query(a.$container-main, a.$bp-xlarge-1) {
+        padding-left: clamp(12%, calc(8% + 2em), 15%);
+      }
+    }
+  }
+
+  &__submit {
+    // Style submit button
+    @apply text-t-s font-SemiBold rounded-r-lg rounded-l-none ml-0;
+
+    // Adjust padding for extra-large devices
+    @include l.container-query(a.$container-main, a.$bp-xlarge-1) {
+      @apply px-[2.65em];
+    }
+
+    // Padding for very small screens
+    @apply @w-5xs:px-sm;
+  }
+
+  /// Added styles for Error handling
+  &__error {
+    @apply text-system-error dark:text-system-error
+      text-sm mt-2 absolute -bottom-7;
+  }
+
+  /// Lets add style when we have an success
+  &__success {
+    @apply text-system-success dark:text-system-success
+      text-sm mt-2 absolute -bottom-7;
+  }
+}

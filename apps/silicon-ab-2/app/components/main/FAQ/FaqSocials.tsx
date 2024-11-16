@@ -16,7 +16,6 @@ function FaqSocials() {
 			</ButtonForm>
 			<div className="faq__faq-contact__contact-card">
 				<Image
-					className=""
 					src="/images/socials/contact-phone-icon.svg"
 					alt="Phone Image"
 					width={0}
@@ -26,8 +25,8 @@ function FaqSocials() {
 				<ButtonForm
 					variant="link-icon"
 					icon={faArrowRight}
-					iconClassName=""
-					className="faq__faq-contact__contact-card--primary"
+					iconClassName="faq__faq-contact__contact-card--color-primary"
+					className="faq__faq-contact__contact-card--color-primary"
 					iconPosition="right"
 				>
 					Contact us
@@ -45,7 +44,6 @@ function FaqSocials() {
 				<ButtonForm
 					variant="link-icon"
 					icon={faArrowRight}
-					iconClassName=""
 					className="faq__faq-contact__contact-card--color-green"
 					iconPosition="right"
 				>

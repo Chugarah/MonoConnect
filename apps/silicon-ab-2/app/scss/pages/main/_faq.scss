@@ -286,7 +286,7 @@
 
       /// Styling the link and adding some spacing
       &--color-primary {
-        @apply text-primary;
+        @apply text-primary dark:!text-primary;
       }
 
       button {
@@ -301,7 +301,7 @@
 
       /// Green link
       &--color-green {
-        @apply text-system-success;
+        @apply text-system-success dark:!text-system-success;
       }
     }
   }

@@ -60,6 +60,7 @@ const lightTheme = {
 		foreground: colors.white,
 		gradient: `linear-gradient(to left, ${colors.primary.DEFAULT} 0, ${colors.primary.purple} 50%, ${colors.primary.pink} 100%)`,
 	},
+	"subscription-section": colors.grey[100],
 };
 
 /// AI Generated from Phind
@@ -96,6 +97,7 @@ const darkTheme = {
 		foreground: colors.white,
 		gradient: `linear-gradient(to left, ${colors.primary.DEFAULT} 0, ${colors.primary.purple} 50%, ${colors.primary.pink} 100%)`,
 	},
+	"subscription-section": "rgba(255, 255, 255, 0.04)",
 };
 
 // Shadow Configurations
