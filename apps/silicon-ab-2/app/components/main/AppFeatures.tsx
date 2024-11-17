@@ -10,6 +10,7 @@ function AppFeatures() {
 						alt="Iphone showing App features"
 						width={348}
 						height={684}
+						priority
 						className="app-features__phone-image"
 					/>
 					<div>

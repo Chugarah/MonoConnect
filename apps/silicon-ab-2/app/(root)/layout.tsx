@@ -55,16 +55,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<div className="skeleton-wrapper">
-			<ThemeProvider>
-				<FaqProvider>
-					<TestimonialsProvider>
-						<Header />
-						<MainContent>{children}</MainContent>
-						<Footer />
-					</TestimonialsProvider>
-				</FaqProvider>
-			</ThemeProvider>
-		</div>
+		<ThemeProvider>
+			<FaqProvider>
+				<TestimonialsProvider>
+					<Header />
+					<MainContent>{children}</MainContent>
+					<Footer />
+				</TestimonialsProvider>
+			</FaqProvider>
+		</ThemeProvider>
 	);
 }

@@ -13,11 +13,11 @@
   @include l.grid-row-colum(
     map.get($map: a.$display-type, $key: "grid"),
     a.create-list(auto),
-    a.create-list(auto, 2fr, auto)
+    a.create-list(auto, 1fr, auto)
   );
 
   /// Basic Settings
-  @apply w-dvw m-auto;
+  @apply w-dvw m-auto min-h-dvh;
 }
 
 /// =============================================================================
