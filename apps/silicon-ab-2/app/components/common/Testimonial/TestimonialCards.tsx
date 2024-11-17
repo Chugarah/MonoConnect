@@ -6,8 +6,9 @@ import { useTestimonials } from "@/app/contexts/testimonials/hooks/useTestimonia
 import TestimonialCardSkeleton from "@/app/components/skeletons/TestimonialCardSkeleton";
 import { motion, AnimatePresence } from "framer-motion";
 import TestimonialError from "@/app/components/common/Testimonial/TestimonialError";
+import { memo } from "react";
 
-function TestimonialCards() {
+const TestimonialCards = memo(function TestimonialCards() {
 	const { testimonials, apiResponseProp } = useTestimonials();
 
 	// Create an array of unique identifiers for stars
@@ -90,6 +91,6 @@ function TestimonialCards() {
 			</AnimatePresence>
 		</>
 	);
-}
+});
 
 export default TestimonialCards;

@@ -54,7 +54,9 @@ $_grid-max-width: 46.625rem;
 .app-description-wrapper,
 .faq-wrapper,
 .subscribe,
-.footer-wrapper {
+.footer-wrapper,
+.contact-page-wrapper--white,
+.piff-puff {
   @apply bg-theme-light-bg-color dark:bg-theme-dark-bg-color overflow-hidden;
 }
 
@@ -62,6 +64,7 @@ $_grid-max-width: 46.625rem;
 .app-how-diw-wrapper,
 .clients-app-wrapper,
 .mobile-drawer,
+.contact-page-wrapper,
  {
   @apply bg-theme-light-section-color dark:bg-theme-dark-section-color;
 }
@@ -80,7 +83,8 @@ $_grid-max-width: 46.625rem;
 .clients-app,
 .faq,
 .subscribe__container,
-.footer-wrapper__footer-container {
+.footer-wrapper__footer-container,
+.contact-page-wrapper__container {
   @include l.responsive-container(a.$container-main);
 }
 

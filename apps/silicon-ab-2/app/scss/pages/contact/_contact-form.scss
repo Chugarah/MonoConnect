@@ -1,0 +1,97 @@
+@use "../../layout" as l;
+@use "../../abstracts" as a;
+
+.contact-form {
+  /// ==== Start Responsive
+  /// We are setting margin auto, min height is 100&
+  /// and we are setting with to be 50%
+
+  @apply @w-5xs:m-auto px-xs min-h-full @w-3xl:w-full @w-medium:w-full;
+  /// ==== END Responsive
+
+  @apply max-w-[40em]
+  // We had to use standard hardcoded colors because our theme one is using opacity and it does not
+  // go well with this white background :D
+    bg-white dark:bg-[#1e232dbc] rounded-lg
+    shadow-small text-left overflow-hidden;
+
+  &__container {
+    @apply flex py-[5.125em] px-[4.5625em] flex-col;
+
+    /// ==== Start Responsive
+    @apply @w-5xs:px-xs
+    @w-medium:px-xs @w-medium:py-[4.125em] @w-medium:px-[3.5625em];
+
+    /// ==== END Responsive
+    &__form-item {
+      /// Some tiny spacing label
+      @apply pb-xl relative;
+      & label {
+        @apply pb-2xs;
+      }
+
+      &__field {
+        // Set relative position and flex-grow
+        @apply relative flex-1;
+
+        &-icon {
+          // Position icon absolutely and style it
+          @apply absolute text-grey-500 pointer-events-none w-20 h-40
+          left-[5%] top-1/2 -translate-y-1/2 border-none;
+        }
+
+        &-input {
+          // Style input field
+          @apply w-full flex-grow text-inherit font-Regular
+      text-grey-500 bg-white dark:bg-[#13171F]
+      border-grey-300 dark:border-theme-dark-cards-border
+        rounded-tr-none rounded-br-none py-[1.786em] m-0 p-xs;
+
+        /// Add Custom Errors with higher specificity using data-error property
+        &[data-error="true"] {
+          @apply border-system-error dark:border-system-error
+          focus:border-system-error dark:focus:border-system-error
+          ring-system-error dark:ring-system-error
+          focus-visible:ring-system-error dark:focus-visible:ring-system-error
+          focus-visible:border-system-error dark:focus-visible:border-system-error
+          focus:ring-system-error dark:focus:ring-system-error
+          focus:ring-2;
+        }
+        }
+      }
+
+      /// Lets style out beautiful button
+      &__button {
+        @apply w-full ml-0 drop-shadow-xl p-sm;
+        @apply @w-xs:mt-md @w-medium:mt-lg @w-xlarge:mt-xl;
+      }
+    }
+  }
+
+  /// Added styles for Error handling
+  &__error {
+    @apply text-system-error dark:text-system-error
+      text-lg mt-2  !important;
+  }
+
+  /// Lets add style when we have an success
+  &__success {
+    @apply text-system-success dark:text-system-success
+      text-sm mt-2 !important;
+  }
+
+  & h2,
+  p,
+  label {
+    @apply text-theme-light-display-headings dark:text-theme-dark-display-headings;
+  }
+
+  & h2 {
+    @apply pb-40
+    @w-xs:m-auto text-center  @w-medium:text-left @w-xlarge:m-0 text-left;
+  }
+
+  & p {
+    @apply text-base;
+  }
+}

@@ -1,0 +1,19 @@
+.contact-adress-card {
+  &__adress-container {
+    @apply flex flex-col p-md items-start;
+
+    h4 {
+      @apply text-theme-light-display-headings dark:text-theme-dark-display-headings;
+    }
+
+    &__icon-flex {
+      @apply pt-md flex gap-sm items-center;
+
+      /// Image Beside Card content
+      &__img {
+        @apply bg-theme-light-icon-bg-color dark:bg-theme-dark-icon-bg-color
+        rounded-lg  w-auto h-auto p-20;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.contact-card {
+  @apply flex text-left max-w-[25em] gap-12 pb-lg;
+  @apply @w-xl:pr-md @w-2xl:pr-md  @w-xlarge:pr-0;
+
+  &__icon {
+    @apply bg-white p-sm rounded-full h-60 w-60
+    text-theme-dark-primary dark:text-theme-dark-primary;
+  }
+
+  &__text {
+    @apply flex gap-12 flex-col;
+  }
+
+  & button {
+    @apply ml-0 w-fit;
+  }
+
+  h4 {
+    @apply pl-sm;
+  }
+
+  p {
+    @apply pl-sm text-t-m font-Regular text-theme-light-forms dark:text-theme-dark-forms;
+  }
+
+  & h2,
+  h4 {
+    @apply text-theme-light-display-headings dark:text-theme-dark-display-headings;
+  }
+}

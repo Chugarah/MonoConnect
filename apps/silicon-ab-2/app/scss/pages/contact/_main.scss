@@ -1,0 +1,89 @@
+@use "../../layout" as l;
+@use "../../abstracts" as a;
+
+/// Setting Heading style
+.contact-header {
+  @apply bg-none;
+  @apply bg-theme-light-section-color dark:bg-theme-dark-section-color;
+}
+
+.contact-page-wrapper {
+  &--white {
+    @apply @w-xs:pt-md @w-medium:pt-[14.6875em];
+  }
+
+  &__container {
+    @apply relative w-full min-h-[38.8125rem];
+
+    &__bread-crumbs {
+      /// ==== Responsive START
+      @apply @w-xs:justify-center @w-medium:justify-start;
+      /// ==== Responsive END
+
+      @apply w-full pt-60 pb-48 flex items-center;
+
+      // Style for all icons
+      & svg {
+        @apply text-grey-600;
+      }
+
+      // Style for home icon and text group
+      & a {
+        @apply flex items-center text-grey-600 hover:text-primary;
+
+        // Space between icon and text
+        & span {
+          @apply px-xs;
+        }
+      }
+
+      // Style for separator icon (angles-right)
+      & > svg {
+        @apply mx-xs;
+      }
+    }
+
+    /// Upper Contact Section
+    &__contact-header {
+      /// ==== Responsive START
+      @apply @w-5xs:flex-col @w-[800px]:flex-row;
+      /// ==== Responsive END
+
+      @apply flex justify-between text-center relative;
+
+      /// Contact Text Information
+      &__contact-info {
+        /// Dirty Hack to let the info be above the contact-form
+        /// because of padding, just inspect the __contact-form in
+        /// debugger tool and you will se lol
+        @apply z-10;
+        /// ==== Responsive START
+        @apply @w-5xs:items-center
+          @w-xs:w-full
+          @w-medium:w-[42%] @w-medium:items-start
+          @w-xlarge:w-1/2;
+        /// ==== Responsive END
+        @apply flex flex-col;
+
+        &--body {
+          @apply @w-xs:w-full @w-medium:w-[45%];
+        }
+      }
+      /// Contact Form
+      &__contact-form {
+
+        /// ==== Responsive START
+        @apply @w-xs:relative @w-xs:left-0 @w-xs:w-full
+        // Love this magic number, it solve the issue with over flow x axel, we use Padding,
+        // padding...what an lovely
+          @w-medium:absolute @w-medium:pl-[42%];
+        /// ==== Responsive END
+
+        &--body {
+          @apply mt-[15em];
+          @apply @w-5xs:w-full @w-medium:w-1/2;
+        }
+      }
+    }
+  }
+}
