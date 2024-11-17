@@ -15,7 +15,7 @@
 
       &__li-items {
         @apply text-theme-light-navigation dark:text-theme-dark-navigation
-        cursor-pointer transition-all duration-200;
+        cursor-pointer transition-all duration-200 pl-md;
         will-change: color;
 
         &:hover {

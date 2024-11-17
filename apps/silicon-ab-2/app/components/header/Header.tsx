@@ -1,11 +1,13 @@
+"use client";
+
 import React from "react";
 import Menu from "@/app/components/header/Menu";
 import NavGroup from "@/app/components/forms/NavGroup";
 import MobileMenu from "@/app/components/MobileMenu";
-
 import Hero from "@/app/components/hero/Hero";
 import ThemeImagesFiles from "@/app/components/common/ThemeImagesFiles";
 import ThemeImages from "@/app/components/header/ThemeImages";
+import { usePathname } from "next/navigation";
 
 /**
  * Header component that contains the main navigation and branding elements
@@ -61,6 +63,9 @@ import ThemeImages from "@/app/components/header/ThemeImages";
  * - Implements proper heading hierarchy
  */
 function Header() {
+	const pathname = usePathname();
+	const isHomePage = pathname === "/" || pathname === "/home";
+
 	return (
 		<header aria-label="Navigation & Logo" className="header-wrapper">
 			<nav className="header" aria-label="Menu Navigation">
@@ -77,7 +82,8 @@ function Header() {
 				<NavGroup />
 				<MobileMenu />
 			</nav>
-			<Hero />
+			{/* This is conditional based on Routing because Hero Section is part of header*/}
+			{isHomePage && <Hero />}
 		</header>
 	);
 }

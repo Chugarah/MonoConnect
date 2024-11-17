@@ -1,0 +1,15 @@
+.footer-wrapper {
+  &__footer-container {
+    ///----------- Responsive START -----------
+    /// Mobile Devices
+    @apply @w-xs:py-[2.1875em] px-[5.375em]
+    /// Tablet and smaller laptops
+    @w-xlarge-1:py-[2.1875em];
+
+    ///----------- Responsive END -----------
+    @apply text-center py-56;
+    p {
+      @apply text-t-s font-Regular;
+    }
+  }
+}

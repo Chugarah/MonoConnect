@@ -53,7 +53,8 @@ $_grid-max-width: 46.625rem;
 .app-features-wrapper,
 .app-description-wrapper,
 .faq-wrapper,
-.subscribe {
+.subscribe,
+.footer-wrapper {
   @apply bg-theme-light-bg-color dark:bg-theme-dark-bg-color overflow-hidden;
 }
 
@@ -77,7 +78,8 @@ $_grid-max-width: 46.625rem;
 .app-description,
 .clients-app,
 .faq,
-.subscribe__container {
+.subscribe__container,
+.footer-wrapper__footer-container {
   @include l.responsive-container(a.$container-main);
 }
 

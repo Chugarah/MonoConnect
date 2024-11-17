@@ -19,6 +19,7 @@ import type { apiResponseProp } from "@/types/api/global";
  * @param {boolean} [options.simulateLoading=false] - If true, simulates a loading delay. Useful for testing loading states in UI.
  * @param {number} [options.loadingTime=0] - Duration of the simulated loading delay in milliseconds. Only applicable if simulateLoading is true.
  * @param {boolean} [options.expectsData=true] - If true, indicates that we expect data from the endpoint. If false, the function will not attempt to parse response data.
+ * @param {RequestCache} [options.cache] - Cache mode to use for the fetch request.
  * @returns {Promise<apiResponseProp<T>>} A promise that resolves to an API response object containing the data, error, message, and loading state.
  * @property {T | null} data - The fetched data of type T if successful, null if an error occurred.
  * @property {Error | null} error - An Error object if the fetch failed, null if successful.
@@ -54,8 +55,19 @@ export async function fetchData<T>(
 		simulateLoading?: boolean;
 		loadingTime?: number;
 		expectsData?: boolean;
+		cache?: RequestCache;
 	},
 ): Promise<apiResponseProp<T>> {
+	const fetchOptions: RequestInit = {
+		method: options?.method || "GET",
+		headers: options?.headers,
+		body: options?.body,
+		cache: options?.cache || "force-cache",
+		next: {
+			revalidate: 3600,
+		},
+	};
+
 	try {
 		// Simulate loading delay if specified in options
 		if (options?.simulateLoading) {
@@ -65,11 +77,7 @@ export async function fetchData<T>(
 		}
 
 		// Perform the fetch request with the specified options
-		const response = await fetch(url, {
-			method: options?.method || "GET",
-			headers: options?.headers,
-			body: options?.body,
-		});
+		const response = await fetch(url, fetchOptions);
 
 		// Check if the response status is not OK and throw an error if so
 		if (!response.ok) {
