@@ -98,9 +98,9 @@ function SubscriptionForm() {
 				},
 			);
 			apiResponse = response;
-		} catch (error) {
+		} catch (err) {
 			setApiMessage({
-				error: new Error("Failed to subscribe"),
+				error: err instanceof Error ? err : new Error("Failed to subscribe"),
 				message: "Failed to subscribe to newsletter",
 				isLoading: false,
 				data: null,

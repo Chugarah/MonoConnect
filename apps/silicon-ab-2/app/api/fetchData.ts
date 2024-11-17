@@ -95,7 +95,7 @@ export async function fetchData<T>(
 		}
 
 		// Parse the response data as JSON
-		const rawData = await response.json();
+		const rawData = (await response.json()) as unknown;
 
 		// Check if the parsed data is an array and return it if so
 		if (Array.isArray(rawData)) {
