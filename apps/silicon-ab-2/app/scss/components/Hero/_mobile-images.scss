@@ -24,16 +24,16 @@
   &__image-wrapper {
     @apply w-full h-full relative;
     &__iphone-1 img {
-      @apply w-[24.375em] absolute z-[250] right-[0em] mr-[-3.2em];
+      @apply w-[24.375em] absolute z-[1] right-[0em] mr-[-3.2em];
 
       /// Larger desktop screens
       @include l.container-query(a.$container-header, 0, a.$bp-xlarge-1) {
-        @apply w-[15.23375em] right-[-2.5em] z-[250] top-[10.2em];
+        @apply w-[15.23375em] right-[-2.5em] z-[2] top-[10.2em];
       }
     }
     &__iphone-2 img {
       @apply absolute right-[10.5em]
-      h-auto top-[8.5em] z-[125] w-[23.5em] aspect-auto
+      h-auto top-[8.5em] z-[2] w-[23.5em] aspect-auto
       drop-shadow-2xl;
 
       /// Larger desktop screens

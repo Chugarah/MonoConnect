@@ -4,6 +4,7 @@ import React from "react";
 import "../../scss/components/Header/index.scss";
 import { motion as m } from "framer-motion";
 import Link from "next/link";
+import type { MenuProps } from "@/types/theme/themeTypes";
 
 /**
  * Menu component for the header navigation
@@ -47,11 +48,16 @@ import Link from "next/link";
  *
  * @returns {React.ReactElement} A navigation menu with animated list items containing Features and Contact links
  */
-function Menu() {
+
+function Menu({ onNavigate }: MenuProps) {
+	const handleClick = () => {
+		onNavigate?.();
+	};
+
 	return (
 		<div className="header-menu">
 			<ul className="header-menu__navigation">
-				<Link href="/">
+				<Link href="/" onClick={handleClick}>
 					<m.li
 						className="header-menu__navigation__li-items"
 						initial={{ scale: 1 }}
@@ -66,7 +72,7 @@ function Menu() {
 						Features
 					</m.li>
 				</Link>
-				<Link href="/contact">
+				<Link href="/contact" onClick={handleClick}>
 					<m.li
 						className="header-menu__navigation__li-items"
 						initial={{ scale: 1 }}

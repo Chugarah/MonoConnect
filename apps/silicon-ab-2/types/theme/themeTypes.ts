@@ -141,3 +141,7 @@ export interface UseRepeatedIconsProps extends Omit<IconFAProps, "title"> {
 export interface AccordionProps extends Faq {
 	isOpen: boolean;
 }
+
+export interface MenuProps {
+	onNavigate?: () => void;
+}

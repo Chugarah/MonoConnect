@@ -1,6 +1,83 @@
 .mobile-menu {
-  @apply @w-xlarge-1/header:hidden @w-medium/header:flex;
+  @apply @w-xlarge-1/header:hidden @w-medium/header:hidden;
 
   @apply text-center p-[0.75em] cursor-pointer
     text-theme-light-forms dark:text-theme-dark-forms;
+}
+
+.mobile-container {
+  &__footer {
+    @apply mt-auto p-0;
+  }
+
+  &__close-button {
+    @apply w-full py-6 text-lg rounded-none border-0
+      text-theme-light-navigation dark:text-theme-dark-navigation
+      hover:bg-theme-light-cards dark:hover:bg-theme-dark-cards
+      hover:text-white dark:hover:text-theme-dark-primary;
+  }
+}
+
+.mobile-drawer {
+  @apply z-[5000];
+  & .header-menu {
+    @apply @w-mobile/header:flex @w-5xs/header:flex @w-medium/header:flex w-full;
+
+    &__navigation {
+      @apply flex-col items-stretch w-full p-0 m-0;
+
+      &__li-items {
+        @apply text-theme-light-navigation dark:text-theme-dark-navigation
+          text-center py-4 w-full h-xl text-xl pl-0
+          cursor-pointer transition-all duration-200 content-center;
+        will-change: color;
+
+        &:hover {
+          @apply text-theme-light-primary dark:text-theme-dark-primary
+            bg-theme-light-cards dark:bg-theme-dark-cards;
+        }
+
+        &:active {
+          @apply text-theme-light-primary dark:text-theme-dark-primary brightness-90;
+        }
+
+        &:focus-visible {
+          @apply text-grey-600 outline-none;
+        }
+      }
+    }
+  }
+
+  & .header__logo {
+    @apply m-auto my-md;
+  }
+
+  @apply w-screen max-w-[50%] h-full bg-theme-light-section-color dark:bg-theme-dark-section-color;
+}
+
+/// Based on chad cn UI For Drawer, based on the information from
+/// and AI Phind we need to using standard media query to hide instead of using media
+/// because the drawer is rendered outside the container query context.
+.drawer-content {
+  // Largest breakpoint first
+  @media (min-width: 1299px) {
+    display: none;
+  }
+
+  // Medium breakpoint, this will allow the user able to browser the mobile
+  // menu in large screen than tablet and it will display 50%
+  @media (max-width: 1298px) and (min-width: 769px) {
+    max-width: 50%;
+  }
+
+  // Mobile breakpoint
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+}
+
+.drawer-overlay {
+  @media (min-width: 1299px) {
+    display: none;
+  }
 }
