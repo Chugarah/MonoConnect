@@ -8,6 +8,7 @@ import Hero from "@/app/components/hero/Hero";
 import ThemeImagesFiles from "@/app/components/common/ThemeImagesFiles";
 import ThemeImages from "@/app/components/header/ThemeImages";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 /**
  * Header component that contains the main navigation and branding elements
@@ -69,20 +70,21 @@ function Header() {
 	return (
 		<header aria-label="Navigation & Logo" className="header-wrapper">
 			<nav className="header" aria-label="Menu Navigation">
-				<ThemeImages
-					lightSrc={ThemeImagesFiles.logo.light}
-					darkSrc={ThemeImagesFiles.logo.dark}
-					alt="Logo"
-					width={140}
-					height={52}
-					className="header__logo"
-				/>
+				<Link href="/">
+					<ThemeImages
+						lightSrc={ThemeImagesFiles.logo.light}
+						darkSrc={ThemeImagesFiles.logo.dark}
+						alt="Logo"
+						width={140}
+						height={52}
+						className="header__logo"
+					/>
+				</Link>
 
 				<Menu />
 				<NavGroup />
 				<MobileMenu />
 			</nav>
-			{/* This is conditional based on Routing because Hero Section is part of header*/}
 			{isHomePage && <Hero />}
 		</header>
 	);
