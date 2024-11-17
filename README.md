@@ -1,8 +1,7 @@
-# Silicon AB 2.0.0
+# EC Webb­utvecklare inom .NET
 
-Building in progress....
+Går en utbildningen inom .NET webbutveckling
+[Webb­utvecklare inom .NET](https://ecutbildning.se/utbildningar/webbutvecklare-inom-net/)
 
-<https://gpg4win.org/download.html>
-
-
-Have disabled Tailwind CSS IntelliSense validation becouse of the plugin require("@tailwindcss/container-queries"),
+Gjorde om Silicon AB till Silicon 2.0.0 finns nedanför om ni vi läsa
+[Link Text](./apps/silicon-ab-2/README.md)
